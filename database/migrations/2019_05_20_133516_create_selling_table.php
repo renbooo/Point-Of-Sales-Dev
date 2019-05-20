@@ -15,7 +15,7 @@ class CreateSellingTable extends Migration
     {
         Schema::create('selling', function (Blueprint $table) {
             $table->increments('selling_id');
-            $tabel->bigInteger('member_code')->unsigned();
+            $table->bigInteger('member_code')->unsigned();
             $table->integer('total_item')->unsigned();
             $table->bigInteger('total_price')->unsigned();
             $table->integer('discount')->unsigned();
