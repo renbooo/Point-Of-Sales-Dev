@@ -31,6 +31,9 @@
     <!-- Custom Css -->
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
+    <!-- JQuery DataTable Css -->
+    <link href="{{asset('plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')}}" rel="stylesheet">
+
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{asset('css/themes/all-themes.css')}}" rel="stylesheet" />
 </head>
@@ -573,14 +576,18 @@
     <!-- SweetAlert Plugin Js -->
     <script src="{{asset('plugins/sweetalert/sweetalert.min.js')}}"></script>
 
-    <!-- Custom Js -->
-    <script src="{{asset('js/admin.js')}}"></script>
-    <script src="{{asset('js/pages/ui/dialogs.js')}}"></script>
-
     <!-- Demo Js -->
     <script src="{{asset('js/demo.js')}}"></script>
 
-    <script src="{{asset('plugins/jquery.dataTables.js')}}"></script>
+    <script src="{{asset('plugins/jquery-datatable/jquery.dataTables.js')}}"></script>
+    <script src="{{asset('plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
+    <script src="{{asset('plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js')}}"></script>
+   {{--  <script src="{{asset('plugins/jquery-validation/jquery.validate.js')}}"></script> --}}
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
+
+        <!-- Custom Js -->
+    <script src="{{asset('js/admin.js')}}"></script>
+    <script src="{{asset('js/pages/ui/dialogs.js')}}"></script>
 
     @yield('script')
 </body>

@@ -36,8 +36,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -84,14 +82,14 @@
 	});
 	function addForm(){
 		save_method = "add";
-		$('input[name=method]').val('POST');
+		$('input[name=_method]').val('POST');
 		$('#modal-form').modal('show');
 		$('#modal-form form')[0].reset();
 		$('.modal-title').text('Tambah Kategori');
 	}
 	function editForm(id){
 		save_method = "edit";
-		$('input[name=method]').val('PATCH');
+		$('input[name=_method]').val('PATCH');
 		$('#modal-form form')[0].reset();
 		$.ajax({
 			url			: "category/"+id+"/edit",
@@ -100,6 +98,7 @@
 			success		: function(data){
 				$('#modal-form').modal('show');
 				$('.modal-title').text('Edit Kategori');
+
 				$('#id').val(data.category_id);
 				$('#category_name').val(data.category_name);
 			},
@@ -114,7 +113,7 @@
 			$.ajax({
 				url		: "category/"+id,
 				type 	: "POST",
-				data 	: {'method' : 'DELETE', ' token' : $('meta[name=crsf-token]').attr('content')},
+				data 	: {'_method' : 'DELETE', '_token' : $('meta[name=csrf-token]').attr('content')},
 				success : function(data){
 					table.ajax.reload();
 				},
@@ -125,4 +124,5 @@
 		}
 	}
 </script>
+
 @endsection
