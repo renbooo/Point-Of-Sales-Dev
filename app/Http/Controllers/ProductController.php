@@ -16,7 +16,7 @@ class ProductController extends Controller
     }
 
     public function listData(){
-    	$product = Product::leftJoin('category', 'category.category_id', '=', 'product.product_id')->orderBy('product.product_id', 'desc')->get();
+    	$product = Product::leftJoin('category', 'category.category_id', '=', 'product.category_id')->orderBy('product.product_id', 'desc')->get();
     	$no = 0;
     	$data = array();
     	foreach ($product as $list) {
@@ -46,7 +46,7 @@ class ProductController extends Controller
     		$product = new Product;
     		$product->product_code = $request['product_code'];
     		$product->product_name = $request['product_name'];
-    		$product->category_id = $request['category_id'];
+    		$product->category_id = $request['category'];
     		$product->product_brand = $request['product_brand'];
     		$product->purchase_price = $request['purchase_price'];
     		$product->discount = $request['discount'];
@@ -66,9 +66,8 @@ class ProductController extends Controller
 
     public function update(Request $request, $id){
     	$product = Product::find($id);
-    	$product->product_code = $request['product_code'];
 		$product->product_name = $request['product_name'];
-		$product->category_id = $request['category_id'];
+		$product->category_id = $request['category'];
 		$product->product_brand = $request['product_brand'];
 		$product->purchase_price = $request['purchase_price'];
 		$product->discount = $request['discount'];

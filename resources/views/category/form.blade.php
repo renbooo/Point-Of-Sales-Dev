@@ -8,9 +8,10 @@
             </div>
 				
                 <div class="modal-body">
+                    <input type="hidden" id="id" name="id">
                     <div class="form-group form-float">
                         <div class="form-line">
-                        	<input type="hidden" id="id" name="id">
+                        	
                         	<label class="form-label">Nama Kategori</label>
                             <input type="text" class="form-control" id="category_name" name="category_name" autofocus required>
                         </div>

@@ -27,7 +27,7 @@
                 </div>
                 <div class="body">
                     <div class="table-responsive">
-                    	<form method="POST" id="form-produk">
+                    	<form method="POST" id="form-product">
                     		{{csrf_field()}}
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                             <thead>
@@ -48,7 +48,7 @@
                             <tbody>
                             </tbody>
                         </table>
-                    </form>
+                    	</form>
                     </div>
                 </div>
             </div>
@@ -129,10 +129,10 @@
 				$('#modal-form').modal('show');
 				$('.modal-title').text('Edit Produk');
 
-				$('#id').val(data.category_id);
+				$('#id').val(data.product_id);
 				$('#product_code').val(data.product_code).attr('readonly', true);
 				$('#product_name').val(data.product_name);
-				$('#category_id').val(data.category_id);
+				$('#category').val(data.category_id);
 				$('#product_brand').val(data.product_brand);
 				$('#purchase_price').val(data.purchase_price);
 				$('#discount').val(data.discount);
@@ -162,7 +162,7 @@
 	}
 
 	function deleteAll(){
-		if ($('input:checked').length<1) {
+		if ($('input:checked').length < 1) {
 			alert('Pilih data yang akan dihapus!');
 		}else{
 			$('#form-product').attr('target', '_blank').attr('action', "product/print").submit();

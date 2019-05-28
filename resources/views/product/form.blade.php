@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-form" tabindex="-1" role="dialog">
+<div class="modal" id="modal-form" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <form id="form_validation" method="POST" data-toggle="validator">
@@ -8,10 +8,10 @@
             </div>
 				
                 <div class="modal-body">
+                <input type="hidden" id="id" name="id">
                     <div class="form-group form-float">
+                        <label class="form-label">Kode Produk</label>
                         <div class="form-line">
-                        	<input type="hidden" id="id" name="id">
-                            <label class="form-label">Kode Produk</label>
                             <input type="number" class="form-control" id="product_code" name="product_code" autofocus required>
                         </div>
                     </div>
@@ -23,11 +23,10 @@
                     </div>
                     <div class="form-group form-float">
                         <div class="form-line">
-                        	<label class="form-label">Kategori</label>
-                            <select class="form-control show-tick">
+                            <select id="category" type="text" name="category" class="form-control show-tick" required>
                                 <option value="">-- Pilih Kategori --</option>
                                 @foreach($category as $list)
-                                    <option value="{{$list->category_id}}">{{$list->category_name}}</option>
+                                <option value="{{$list->category_id}}">{{$list->category_name}}</option>
                                 @endforeach
                             </select>
                         </div>
