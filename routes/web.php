@@ -23,4 +23,9 @@ Route::group(['middleware' => ['web', 'usercheck:1']],
 function(){
 	Route::get('category/data', 'CategoryController@listData')->name('category.data');
 	Route::resource('category', 'CategoryController');
+
+	Route::get('product/data', 'ProductController@listData')->name('product.data');
+	Route::post('product/delete', 'ProductController@deleteSelected');
+	Route::post('product/print', 'ProductController@printBarcode');
+	Route::resource('product', 'ProductController');
 });

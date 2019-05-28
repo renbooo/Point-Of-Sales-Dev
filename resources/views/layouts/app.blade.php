@@ -19,6 +19,12 @@
     <!-- Bootstrap Core Css -->
     <link href="{{asset('plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
 
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="{{asset('plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}" rel="stylesheet" />
+
+    <!-- Bootstrap DatePicker Css -->
+    <link href="{{asset('plugins/bootstrap-datepicker/css/bootstrap-datepicker.css')}}" rel="stylesheet" />
+
     <!-- Waves Effect Css -->
     <link href="{{asset('plugins/node-waves/waves.css')}}" rel="stylesheet" />
 
@@ -27,6 +33,9 @@
 
      <!-- Sweetalert Css -->
     <link href="{{asset('plugins/sweetalert/sweetalert.css')}}" rel="stylesheet" />
+
+    <!-- Bootstrap Select Css -->
+    <link href="{{asset('plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet" />
 
     <!-- Custom Css -->
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
@@ -309,81 +318,81 @@
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li>
-                        <a href="../../index.html">
+                        <a href="{{route('home')}}">
                             <i class="material-icons">home</i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     @if(Auth::user()->level==1)
                     <li>
-                        <a href="../../pages/typography.html">
+                        <a href="{{route('category.index')}}">
                             <i class="material-icons">text_fields</i>
                             <span>Kategori</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../../pages/helper-classes.html">
+                        <a href="{{route('product.index')}}">
                             <i class="material-icons">layers</i>
                             <span>Produk</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../../pages/helper-classes.html">
+                        <a href="{{route('category.index')}}">
                             <i class="material-icons">layers</i>
                             <span>Member</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../../pages/helper-classes.html">
+                        <a href="{{route('category.index')}}">
                             <i class="material-icons">layers</i>
                             <span>Supplier</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../../pages/helper-classes.html">
+                        <a href="{{route('category.index')}}">
                             <i class="material-icons">layers</i>
                             <span>Pengeluaran</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../../pages/helper-classes.html">
+                        <a href="{{route('category.index')}}">
                             <i class="material-icons">layers</i>
                             <span>User</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../../pages/helper-classes.html">
+                        <a href="{{route('category.index')}}">
                             <i class="material-icons">layers</i>
                             <span>Penjualan</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../../pages/helper-classes.html">
+                        <a href="{{route('category.index')}}">
                             <i class="material-icons">layers</i>
                             <span>Pembelian</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../../pages/helper-classes.html">
+                        <a href="{{route('category.index')}}">
                             <i class="material-icons">layers</i>
                             <span>Laporan</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../../pages/helper-classes.html">
+                        <a href="{{route('category.index')}}">
                             <i class="material-icons">layers</i>
                             <span>Setting</span>
                         </a>
                     </li>
                     @else
                     <li>
-                        <a href="../../pages/helper-classes.html">
+                        <a href="{{route('category.index')}}">
                             <i class="material-icons">layers</i>
                             <span>Transaksi</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../../pages/helper-classes.html">
+                        <a href="{{route('category.index')}}">
                             <i class="material-icons">layers</i>
                             <span>Transaksi Baru</span>
                         </a>
@@ -564,6 +573,12 @@
     <!-- Bootstrap Core Js -->
     <script src="{{asset('plugins/bootstrap/js/bootstrap.js')}}"></script>
 
+    <!-- Autosize Plugin Js -->
+    <script src="{{asset('plugins/autosize/autosize.js')}}"></script>
+
+    <!-- Moment Plugin Js -->
+    <script src="{{asset('plugins/momentjs/moment.js')}}"></script>
+
     <!-- Select Plugin Js -->
     <script src="{{asset('plugins/bootstrap-select/js/bootstrap-select.js')}}"></script>
 
@@ -572,6 +587,11 @@
 
     <!-- Waves Effect Plugin Js -->
     <script src="{{asset('plugins/node-waves/waves.js')}}"></script>
+
+    <script src="{{asset('plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}"></script>
+
+    <!-- Bootstrap Datepicker Plugin Js -->
+    <script src="{{asset('plugins/bootstrap-datepicker/js/bootstrap-datepicker.js')}}"></script>
 
     <!-- SweetAlert Plugin Js -->
     <script src="{{asset('plugins/sweetalert/sweetalert.min.js')}}"></script>
@@ -588,6 +608,7 @@
         <!-- Custom Js -->
     <script src="{{asset('js/admin.js')}}"></script>
     <script src="{{asset('js/pages/ui/dialogs.js')}}"></script>
+    <script src="{{asset('js/pages/forms/basic-form-elements.js')}}"></script>
 
     @yield('script')
 </body>
