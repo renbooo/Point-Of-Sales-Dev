@@ -17,6 +17,7 @@ class MemberController extends Controller
         foreach ($member as $list) {
             $no ++;
             $row = array();
+            $row[] = "<input type='checkbox' name='id[]'' id='ig_checkbox' value='".$list->member_id."'><label for='ig_checkbox'></label>"; 
             $row[] = $no;
             $row[] = $list->member_code;
             $row[] = $list->member_name;
