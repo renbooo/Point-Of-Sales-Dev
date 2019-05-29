@@ -154,7 +154,7 @@
 		}
 	}
 
-	function printBarcode(){
+	function printCard(){
 		if ($('input:checked').length < 1) {
 			alert('Pilih data yang akan dicetak!');
 		}else{
