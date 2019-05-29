@@ -27,6 +27,7 @@
                 <div class="body">
                     <div class="table-responsive">
                     	<form method="POST" id="form-member">
+                    		{{csrf_field()}}
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                             <thead>
                                 <tr>

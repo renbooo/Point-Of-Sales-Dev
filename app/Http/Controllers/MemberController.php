@@ -63,11 +63,13 @@ class MemberController extends Controller
     }
     public function printCard(Request $request){
     	$data_member = array();
-    	foreach ($request['id'] as $id) {
-    		$member = Member::find($id);
-    		$data_member[] = $member;
-    	}
-
+    	if (is_array($request['id']) || is_object($request['id']))
+        {
+	    	foreach ($request['id'] as $id) {
+	    		$member = Member::find($id);
+	    		$data_member[] = $member;
+	    	}
+	    }
     	$pdf = PDF::loadView('member.card', compact('data_member'));
     	$pdf->setPaper(array(0, 0, 566.93, 850.39), 'potrait');
     	return $pdf->stream();
