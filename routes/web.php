@@ -28,4 +28,11 @@ function(){
 	Route::post('product/delete', 'ProductController@deleteSelected');
 	Route::post('product/print', 'ProductController@printBarcode');
 	Route::resource('product', 'ProductController');
+
+	Route::get('supplier/data', 'SupplierController@listData')->name('supplier.data');
+	Route::resource('supplier', 'SupplierController');
+
+	Route::get('member/data', 'MemberController@listData')->name('member.data');
+	Route::post('member/print', 'MemberController@printCard');
+	Route::resource('member', 'MemberController');
 });

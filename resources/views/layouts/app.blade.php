@@ -337,9 +337,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('category.index')}}">
+                        <a href="{{route('supplier.index')}}">
                             <i class="material-icons">layers</i>
-                            <span>Member</span>
+                            <span>Supplier</span>
                         </a>
                     </li>
                     <li>
