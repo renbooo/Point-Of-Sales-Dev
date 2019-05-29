@@ -22,7 +22,7 @@ class ProductController extends Controller
     	foreach ($product as $list) {
     		$no ++;
             $row = array();
-            $row[] = "<input type='checkbox' name='id[]'' value='".$list->product_id."'>";
+            $row[] = "<input type='checkbox' name='id[]'' class='filled-in' id='ig_checkbox' value='".$list->product_id."'><label for='ig_checkbox'></label>";
             $row[] = $no;
             $row[] = $list->product_code;
             $row[] = $list->product_name;

@@ -32,7 +32,10 @@
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                             <thead>
                                 <tr>
-                                	<th width="20"><input type="checkbox" value="1" id="select-all"></th>
+                                	<th width="20">
+                                      <input type="checkbox" class="filled-in" value="1" id="ig_checkbox">
+                                      <label for="ig_checkbox"></label>
+                                    </th>
                                     <th width="20">No</th>
                                     <th>Kode</th>
                                     <th>Nama</th>
@@ -77,7 +80,7 @@
 			"order":[1, 'asc']
 		});
 
-		$('#select-all').click(function(){
+		$('#ig_checkbox').click(function(){
 			$('input[type="checkbox"]').prop('checked', this.checked);
 		});
 
@@ -164,8 +167,18 @@
 	function deleteAll(){
 		if ($('input:checked').length < 1) {
 			alert('Pilih data yang akan dihapus!');
-		}else{
-			$('#form-product').attr('target', '_blank').attr('action', "product/print").submit();
+		}else if(confirm("Apakah yakin akan menghapus semua data terpilih?")){
+			$.ajax({
+				url		: "product/delete",
+				type 	: "POST",
+				data 	: $('#form-product').serialize(),
+				success	: function(data){
+					table.ajax.reload();
+				},
+				error	: function(){
+					alert("Tidak dapat menghapus data!");
+				}
+			});
 		}
 	}
 </script>
