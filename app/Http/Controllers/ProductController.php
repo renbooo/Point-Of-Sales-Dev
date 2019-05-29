@@ -91,10 +91,13 @@ class ProductController extends Controller
 
     public function printBarcode(Request $request){
     	$data_product = array();
-    	foreach ($request['id'] as $id) {
-    		$product = Product::find($id);
-    		$data_product[] = $product;
-    	}
+        if (is_array($request['id']) || is_object($request['id']))
+        {
+        	foreach ($request['id'] as $id) {
+        		$product = Product::find($id);
+        		$data_product[] = $product;
+        	}
+        }
     	$no = 1;
     	$pdf = PDF::loadView('product.barcode', compact('data_product', 'no'));
     	$pdf->setPaper('a4', 'potrait');
