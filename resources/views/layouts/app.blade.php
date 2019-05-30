@@ -349,7 +349,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('category.index')}}">
+                        <a href="{{route('spending.index')}}">
                             <i class="material-icons">layers</i>
                             <span>Pengeluaran</span>
                         </a>

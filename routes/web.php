@@ -35,4 +35,7 @@ function(){
 	Route::get('member/data', 'MemberController@listData')->name('member.data');
 	Route::post('member/print', 'MemberController@printCard');
 	Route::resource('member', 'MemberController');
+
+	Route::get('spending/data', 'SpendingController@listData')->name('spending.data');
+	Route::resource('spending', 'SpendingController');
 });
