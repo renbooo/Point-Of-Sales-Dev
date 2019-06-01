@@ -299,7 +299,7 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                            <li><a href="{{route('user.profile')}}"><i class="material-icons">person</i>Profile</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
@@ -355,7 +355,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('category.index')}}">
+                        <a href="{{route('user.index')}}">
                             <i class="material-icons">layers</i>
                             <span>User</span>
                         </a>
@@ -560,9 +560,7 @@
 
     <section class="content">
         <div class="container-fluid">
-            {{-- <div class="block-header">
-                <h2>@yield('title')</h2>
-            </div> --}}
+            
             @yield('content')
         </div>
     </section>
@@ -596,19 +594,23 @@
     <!-- SweetAlert Plugin Js -->
     <script src="{{asset('plugins/sweetalert/sweetalert.min.js')}}"></script>
 
+    <!-- JQuery Steps Plugin Js -->
+    <script src="{{asset('plugins/jquery-steps/jquery.steps.js')}}"></script>
+
     <!-- Demo Js -->
     <script src="{{asset('js/demo.js')}}"></script>
 
     <script src="{{asset('plugins/jquery-datatable/jquery.dataTables.js')}}"></script>
     <script src="{{asset('plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
     <script src="{{asset('plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js')}}"></script>
-   {{--  <script src="{{asset('plugins/jquery-validation/jquery.validate.js')}}"></script> --}}
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
+    <script src="{{asset('plugins/jquery-validation/jquery.validate.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
 
         <!-- Custom Js -->
     <script src="{{asset('js/admin.js')}}"></script>
     <script src="{{asset('js/pages/ui/dialogs.js')}}"></script>
     <script src="{{asset('js/pages/forms/basic-form-elements.js')}}"></script>
+    <script src="{{asset('js/pages/forms/form-wizard.js')}}"></script>
 
     @yield('script')
 </body>

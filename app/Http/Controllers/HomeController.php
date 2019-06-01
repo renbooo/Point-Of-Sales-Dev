@@ -25,6 +25,6 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::user()->level==1) return view('admin.index');
-        else return view('user.index');
+        else return view('cashier.index');
     }
 }

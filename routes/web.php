@@ -38,4 +38,12 @@ function(){
 
 	Route::get('spending/data', 'SpendingController@listData')->name('spending.data');
 	Route::resource('spending', 'SpendingController');
+
+	Route::get('user/data', 'UserController@listData')->name('user.data');
+	Route::resource('user', 'UserController');
+});
+
+Route::group(['middleware' => 'web'], function(){
+	Route::get('user/profile', 'UserController@show')->name('user.profile');
+	Route::patch('user/{id}/change', 'UserController@changeProfile');
 });
