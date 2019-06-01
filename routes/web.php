@@ -41,6 +41,11 @@ function(){
 
 	Route::get('user/data', 'UserController@listData')->name('user.data');
 	Route::resource('user', 'UserController');
+
+	Route::get('purchase/data', 'PurchaseController@listData')->name('purchase.data');
+	Route::get('purchase/{id}/add', 'PurchaseController@create');
+	Route::get('purchase/{id}/show', 'PurchaseController@show');
+	Route::resource('purchase', 'PurchaseController');
 });
 
 Route::group(['middleware' => 'web'], function(){

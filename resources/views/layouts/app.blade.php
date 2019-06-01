@@ -367,7 +367,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('category.index')}}">
+                        <a href="{{route('purchase.index')}}">
                             <i class="material-icons">layers</i>
                             <span>Pembelian</span>
                         </a>
