@@ -46,6 +46,12 @@ function(){
 	Route::get('purchase/{id}/add', 'PurchaseController@create');
 	Route::get('purchase/{id}/show', 'PurchaseController@show');
 	Route::resource('purchase', 'PurchaseController');
+
+	Route::get('purchase_details/{id}/data', 'PurchaseDetailsController@listData')->name('purchase_details.data');
+	Route::get('purchase_details/loadform/{discount}/{total}', 'PurchaseDetailsController@loadForm');
+	Route::resource('purchase_details', 'PurchaseDetailsController');
+
+
 });
 
 Route::group(['middleware' => 'web'], function(){
