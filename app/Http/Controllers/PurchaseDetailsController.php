@@ -14,7 +14,7 @@ class PurchaseDetailsController extends Controller
 {
 	public function index(){
 		$product = Product::all();
-		$product_id = session('purchase_id');
+		$purchase_id = session('purchase_id');
 		$supplier = Supplier::find(session('supplier_id'));
         return view('purchase_details.index', compact('product', 'purchase_id', 'supplier'));
     }
@@ -22,6 +22,8 @@ class PurchaseDetailsController extends Controller
         $detail = PurchaseDetails::leftJoin('product', 'product.product_code', '=', 'purchase_details.product_code', '=', 'purchase_details.product_code')->where('purchase_id', '=', $id)->get();
         $no = 0;
         $data = array();
+        $total = 0;
+        $total_item = 0;
         foreach ($detail as $list) {
             $no ++;
             $row = array();
@@ -33,6 +35,7 @@ class PurchaseDetailsController extends Controller
             $row[] = "Rp. ".currency_format($list->purchase_price * $list->total);
             $row[] = '<a onclick="deleteItem('.$list->purchase_details_id.')" class="btn btn-danger btn-sm"><i class="material-icons">create</i></a>'
             $data[] = $row;
+
             $total += $list->purchase_price * $list->total;
             $total_item += $list->total;
         }

@@ -51,6 +51,9 @@ function(){
 	Route::get('purchase_details/loadform/{discount}/{total}', 'PurchaseDetailsController@loadForm');
 	Route::resource('purchase_details', 'PurchaseDetailsController');
 
+	Route::get('selling/data', 'SellingController@listData')->name('selling.data');
+	Route::get('selling/{id}/show', 'SellingController@show');
+	Route::resource('selling', 'SellingController');
 
 });
 
