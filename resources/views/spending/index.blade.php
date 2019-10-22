@@ -1,53 +1,37 @@
 @extends('layouts.app')
 
-@section('title')
-	Daftar Pengeluaran
+@section('content-header')
+	Pengeluaran
 @endsection
 
 @section('content')
-    <div class="row clearfix">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="header">
-                    <h2>
-                        Daftar Pengeluaran
-                    </h2>
-                    <ul class="header-dropdown m-r--5">
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">more_vert</i>
-                            </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li><a onclick="addForm()">Tambah</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                            <thead>
-                                <tr>
-                                    <th width="20">No</th>
-                                    <th>Tanggal</th>
-                                    <th>Jenis Pengeluaran</th>
-                                    <th>Nominal</th>
-                                    <th width="100">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- Body Copy -->
+<div class="card">
+  <div class="card-body">
+  	<a class="btn btn-primary text-white" onclick="addForm()">Tambah Pengeluaran</a>
+</div>
+  <div class="card-body">
+    <div class="table-responsive">
+         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+            <thead>
+                <tr>
+                    <th width="20">No</th>
+                    <th>Tanggal</th>
+                    <th>Jenis Pengeluaran</th>
+                    <th>Nominal</th>
+                    <th width="100">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
+  </div>
+</div>       
 @endsection
 
-@include('spending.form')
-
 @section('script')
+@include('spending.form')
 <script type="text/javascript">
 	var table, save_method;
 	$(function(){

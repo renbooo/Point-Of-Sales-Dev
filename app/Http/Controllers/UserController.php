@@ -23,8 +23,14 @@ class UserController extends Controller
             $row[] = $list->name;
             $row[] = $list->email;
             $row[] = '<tr>
-                     <a onclick="editForm('.$list->id.')" class="btn btn-warning btn-sm"><i class="material-icons">create</i></a>
-                     <a onclick="deleteData('.$list->id.')" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></a></tr>';
+                     <div class="dropdown d-inline">
+                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Aksi
+                      </button>
+                      <div class="dropdown-menu">
+                        <a onclick="editForm('.$list->id.')" class="dropdown-item has-icon"><i class="fas fa-edit"></i>Edit Data</a>
+                        <a onclick="deleteData('.$list->id.')" class="dropdown-item has-icon"><i class="fas fa-trash"></i>Hapus Data</a>
+                      </div></tr>';
             $data[] = $row;
         }
         $output = array("data" => $data);

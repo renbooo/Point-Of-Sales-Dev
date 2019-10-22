@@ -73,7 +73,7 @@ class PurchaseController extends Controller
     public function store(Request $request){
         $purchase = Purchase::find($request['purchase_id']);
         $purchase->total_item = $request['total_item'];
-        $purchase->total = $request['total'];
+        $purchase->total_price = $request['total'];
         $purchase->discount = $request['discount'];
         $purchase->pay = $request['pay'];
         $purchase->update();

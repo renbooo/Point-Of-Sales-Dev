@@ -1,67 +1,57 @@
 @extends('layouts.app')
 
-@section('title')
-	Daftar Produk
+@section('content-header')
+	Produk
 @endsection
 
 @section('content')
-    <div class="row clearfix">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="header">
-                    <h2>
-                        Daftar Produk
-                    </h2>
-                    <ul class="header-dropdown m-r--5">
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">more_vert</i>
-                            </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li><a onclick="addForm()">Tambah Kategori</a></li>
-                                <li><a onclick="printBarcode()">Cetak Barcode</a></li>
-                                <li><a onclick="deleteAll()">Hapus yang tercentang</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="body">
-                    <div class="table-responsive">
-                    	<form method="POST" id="form-product">
-                    		{{csrf_field()}}
-                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                            <thead>
-                                <tr>
-                                	<th width="20">
-                                      <input type="checkbox" class="filled-in" value="1" id="ig_checkbox">
-                                      <label for="ig_checkbox"></label>
-                                    </th>
-                                    <th width="20">No</th>
-                                    <th>Kode</th>
-                                    <th>Nama</th>
-                                    <th>Kategori</th>
-                                    <th>Merek</th>
-                                    <th>Harga Beli</th>
-                                    <th>Harga Jual</th>
-                                    <th>Diskon</th>
-                                    <th>Stok</th>
-                                    <th width="100">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    	</form>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- Body Copy -->
+<div class="card">
+  <div class="card-body">
+  	<div class="dropdown d-inline">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Kelola
+      </button>
+      <div class="dropdown-menu">
+      	<a class="dropdown-item has-icon" onclick="addForm()"><i class="fas fa-edit"></i>Tambah Produk</a>
+	  	<a class="dropdown-item has-icon" onclick="printBarcode()"><i class="fas fa-trash"></i>Print Barcode Produk</a>
+	  	<a class="dropdown-item has-icon" onclick="deleteAll()"><i class="fas fa-trash"></i>Hapus Semua Data</a>
+      </div>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+    	<form method="POST" id="form-product">
+    		{{csrf_field()}}
+        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+            <thead>
+                <tr>
+                	<th width="20">
+                      <input type="checkbox" class="filled-in" value="1" id="ig_checkbox">
+                      <label for="ig_checkbox"></label>
+                    </th>
+                    <th width="20">No</th>
+                    <th>Kode</th>
+                    <th>Nama</th>
+                    <th>Kategori</th>
+                    <th>Merek</th>
+                    <th>Harga Beli</th>
+                    <th>Harga Jual</th>
+                    <th>Diskon</th>
+                    <th>Stok</th>
+                    <th width="100">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    	</form>
     </div>
+  </div>
+</div>       
 @endsection
 
-@include('product.form')
-
 @section('script')
+@include('product.form')
 <script type="text/javascript">
 	var table, save_method;
 	$(function(){

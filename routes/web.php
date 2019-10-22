@@ -55,6 +55,12 @@ function(){
 	Route::get('selling/{id}/show', 'SellingController@show');
 	Route::resource('selling', 'SellingController');
 
+	Route::get('report', 'ReportController@index')->name('report.index');
+   Route::post('report', 'ReportController@refresh')->name('report.refresh');
+   Route::get('report/data/{begin}/{end}', 'ReportController@listData')->name('report.data'); 
+   Route::get('report/pdf/{begin}/{end}', 'ReportController@exportPDF');
+   Route::resource('setting', 'SettingController');
+
 });
 
 Route::group(['middleware' => 'web'], function(){

@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                         </form>
-                        <form class="form-bucket">
+                        <form class="form-shopping-cart">
                             {{csrf_field()}} {{method_field('PATCH')}}
                             <table class="table table-stripped table-purchase">
                                 <thead>
@@ -55,9 +55,9 @@
                                         <th width="30">No</th>
                                         <th>Kode Produk</th>
                                         <th>Nama Produk</th>
-                                        <th align="right">Harga</th>
+                                        <th>Harga</th>
                                         <th>Jumlah</th>
-                                        <th align="right">Sub Total</th>
+                                        <th>Sub Total</th>
                                         <th width="100">Aksi</th>
                                     </tr>
                                 </thead>
@@ -65,21 +65,21 @@
                             </table>
                         </form>
                         <div class="col-md-8">
-                            <div id="show-pay" style="background: #dd4b39; color: #fff; font-size:80px;
+                            <div id="show-pay" style="background: #dd4b39; color:#fff; font-size:80px;
                             text-align: center; height: 100px"></div>
                             <div id="show-spelling" style="background: #3c8dbc; color: #fff; font-weight:bold; padding: 10px"></div>
                         </div>
                         <div class="col-md-4">
                             <form class="form form-horizontal form-purchase" method="POST" action="{{route('purchase.store')}}">
                                 {{csrf_field()}}
-                                <input type="hidden" name="purchase_id" value="{{purchase_id}}">
+                                <input type="hidden" name="purchase_id" value="{{$purchase_id}}">
                                 <input type="hidden" name="total" id="total">
-                                <input type="hidden" name="totalItem" id="totalItem">
+                                <input type="hidden" name="total_item" id="total_item">
                                 <input type="hidden" name="pay" id="pay">
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <label class="form-label">Total</label>
-                                        <input type="text" class="form-control" id="totalrp" readonly>
+                                        <input type="text" class="form-control" id="total_rp" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
@@ -91,11 +91,11 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <label class="form-label">Bayar</label>
-                                        <input type="text" class="form-control" id="payrp" readonly>
+                                        <input type="text" class="form-control" id="pay_rp" readonly>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-link waves-effect">SIMPAN TRANSAKSI</button>
+                                    <button type="submit" class="btn btn-link waves-effect save">SIMPAN TRANSAKSI</button>
                                 </div>
                             </form>
                         </div>
@@ -106,13 +106,13 @@
     </div>
 @endsection
 
-@include('purchase_details.product')
-
 @section('script')
+@include('purchase_details.product')
 <script type="text/javascript">
-	var table, save_method, table1;
+	var table;
 	$(function(){
-		table = $('.table-product').DataTable({
+        $('.table-product').DataTable();
+		table = $('.table-purchase').DataTable({
 			"dom" : 'Brt',
             "bSort" : false,
             "processing" : true,
@@ -127,13 +127,12 @@
         $('.form-product').on('submit', function(){
             return false;
         });
-
-        $('.form-bucket').submit(function(){
-            return false;
-        });
         $('#product_code').change(function(){
             addItem();
-        })
+        });
+        $('.form-shopping-cart').submit(function(){
+            return false;
+        });
         $('#discount').change(function(){
             if($(this).val()=="")$(this).val(0).select();
             loadForm($(this).val());
@@ -144,7 +143,7 @@
 	});
 	function addItem(){
         $.ajax({
-            url : "{{route('purchase_details')}}",
+            url : "{{route('purchase_details.store')}}",
             type : "POST",
             data : $('.form-product').serialize(),
             success : function(data){
@@ -158,8 +157,8 @@
             }
         })
 	}
-	function selectItem(code){
-		$('#product_code').val('code');
+	function selectItem(product_code){
+		$('#product_code').val(product_code);
         $('#modal-product').modal('hide');
         addItem();
 	}
@@ -168,7 +167,7 @@
 	        $.ajax({
             url : "purchase_details/"+id,
             type : "POST",
-            data : $('.form-bucket').serialize(),
+            data : $('.form-shopping-cart').serialize(),
             success : function(data){
                 $('#product_code').val('').focus();
                 table.ajax.reload(function(){
@@ -205,16 +204,16 @@
 
     function loadForm(discount=0){
         $('#total').val($('.total').text());
-        $('#totalItem').val($('.totalItem').text());
+        $('#total_item').val($('.total_item').text());
         $.ajax({
-            url         : "purchase_details/loadForm/"+discount+"/"+$('.total').text(),
+            url         : "purchase_details/loadform/"+discount+"/"+$('.total').text(),
             type        : "GET",
             dataType    : "JSON",
             success     : function(data){
-                $('#totalrp').val("Rp. "+data.totalrp);
-                $('#payrp').val("Rp. "+data.payrp);
+                $('#total_rp').val("Rp. "+data.total_rp);
+                $('#pay_rp').val("Rp. "+data.pay_rp);
                 $('#pay').val(data.pay);
-                $('#show-pay').text("Rp. "+data.payrp);
+                $('#show-pay').text("Rp. "+data.pay_rp);
                 $('#show-spelling').text(data.spelling)
             },
             error       : function(){

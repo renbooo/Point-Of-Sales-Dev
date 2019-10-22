@@ -1,53 +1,35 @@
 @extends('layouts.app')
 
-@section('title')
-	Daftar Kategori
+@section('content-header')
+	Kategori
 @endsection
 
 @section('content')
-    <div class="row clearfix">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="header">
-                    <h2>
-                        Daftar Kategori
-                    </h2>
-                    <ul class="header-dropdown m-r--5">
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">more_vert</i>
-                            </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li><a onclick="addForm()">Tambah Kategori</a></li>
-                                <li><a href="javascript:void(0);">Another action</a></li>
-                                <li><a href="javascript:void(0);">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Kategori</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- Body Copy -->
+<div class="card">
+  <div class="card-body">
+  	<a class="btn btn-primary text-white" onclick="addForm()">Tambah Kategori</a>
+</div>
+  <div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-striped">
+        	<thead>
+         <tr>
+                <th>No</th>
+                <th>Nama Kategori</th>
+                <th>Kelola Data</th>
+         </tr>
+         </thead>
+         <tbody></tbody>
+        </table>
     </div>
+  </div>
+</div>       
 @endsection
 
+@section('script')
 @include('category.form')
 
-@section('script')
 <script type="text/javascript">
 	var table, save_method;
 	$(function(){

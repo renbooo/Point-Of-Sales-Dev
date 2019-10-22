@@ -1,53 +1,39 @@
 @extends('layouts.app')
 
-@section('title')
-	Daftar Supplier
+@section('content-header')
+	Supplier
 @endsection
 
 @section('content')
-    <div class="row clearfix">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="header">
-                    <h2>
-                        Daftar Supplier
-                    </h2>
-                    <ul class="header-dropdown m-r--5">
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">more_vert</i>
-                            </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li><a onclick="addForm()">Tambah Supplier</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Supplier</th>
-                                    <th>Alamat</th>
-                                    <th>Nomor Telepon</th>
-                                    <th width="100">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+<!-- Body Copy -->
+<div class="card">
+  <div class="card-body">
+  	<a class="btn btn-primary text-white" onclick="addForm()">Tambah Supplier</a>
+</div>
+  <div class="card-body">
+    <div class="table-responsive">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Supplier</th>
+                        <th>Alamat</th>
+                        <th>Nomor Telepon</th>
+                        <th width="100">Kelola Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
     </div>
+  </div>
+</div>       
 @endsection
 
-@include('supplier.form')
-
 @section('script')
+@include('supplier.form')
 <script type="text/javascript">
 	var table, save_method;
 	$(function(){
