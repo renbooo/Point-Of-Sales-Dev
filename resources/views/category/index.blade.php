@@ -8,7 +8,11 @@
 <!-- Body Copy -->
 <div class="card">
   <div class="card-body">
-  	<a class="btn btn-primary text-white" onclick="addForm()">Tambah Kategori</a>
+  	<div class="dropdown d-inline">
+      <button class="btn btn-primary" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-th-large"></i></button>
+      <div class="dropdown-menu">
+      	<a class="dropdown-item has-icon" onclick="addForm()"><i class="fas fa-plus"></i>Tambah Kategori</a>
+      </div>
 </div>
   <div class="card-body">
     <div class="table-responsive">

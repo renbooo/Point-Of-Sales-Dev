@@ -20,7 +20,7 @@
     <th>Pengeluaran</th>
     <th>Pendapatan</th>
    </tr>
-
+</thead>
    <tbody>
     @foreach($data as $row)    
     <tr>

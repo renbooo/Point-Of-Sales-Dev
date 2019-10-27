@@ -5,86 +5,84 @@
 @endsection
 
 @section('content')     
-<div class="row">
-  <div class="col-xs-12">
-    <div class="box">
-
- <form class="form form-horizontal" data-toggle="validator" method="post" enctype="multipart/form-data">
-   {{ csrf_field() }} {{ method_field('PATCH') }}
-   <div class="box-body">
-
+ <form class="form" id="setting-form" data-toggle="validator" method="post" enctype="multipart/form-data">
+  {{ csrf_field() }} {{ method_field('PATCH') }}
   <div class="alert alert-info alert-dismissible" style="display:none">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <i class="icon fa fa-check"></i>
     Perubahan berhasil disimpan.
   </div>
-  
-  <div class="form-group">
-    <label for="company_name" class="col-md-2 control-label">Nama Perusahaan</label>
-    <div class="col-md-6">
-      <input id="company_name" type="text" class="form-control" name="company_name" required>
-      <span class="help-block with-errors"></span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="company_address" class="col-md-2 control-label">Alamat</label>
-    <div class="col-md-10">
-      <input id="company_address" type="text" class="form-control" name="company_address" required>
-      <span class="help-block with-errors"></span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="company_phone_number" class="col-md-2 control-label">Telepon</label>
-    <div class="col-md-4">
-      <input id="company_phone_number" type="text" class="form-control" name="company_phone_number" required>
-      <span class="help-block with-errors"></span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="company_logo" class="col-md-2 control-label">Logo Perusahaan</label>
-    <div class="col-md-4">
-      <input id="company_logo" type="file" class="form-control" name="company_logo">
-      <br><div class="show-logo"></div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="member_card" class="col-md-2 control-label">Desain Kartu Member</label>
-    <div class="col-md-4">
-      <input id="member_card" type="file" class="form-control" name="member_card">
-      <br><div class="show-card"></div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="member_discount" class="col-md-2 control-label">Diskon Member (%)</label>
-    <div class="col-md-2">
-      <input id="member_discount" type="number" class="form-control" name="member_discount"  required>
-      <span class="help-block with-errors"></span>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="note_type" class="col-md-2 control-label">Tipe Nota</label>
-    <div class="col-md-2">
+  <div class="card" id="settings-card">
+    <div class="card-body">
+      <div class="form-group row align-items-center">
+        <label for="company_name" class="form-control-label col-sm-3">Nama Perusahaan</label>
+        <div class="col-sm-6 col-md-9">
+          <input type="text" name="company_name" class="form-control" id="company_name">
+          <span class="help-block with-errors"></span>
+        </div>
+      </div>
+      <div class="form-group row align-items-center">
+        <label for="company_address" class="form-control-label col-sm-3">Alamat Perusahaan</label>
+        <div class="col-sm-6 col-md-9">
+          <textarea class="form-control" name="company_address" id="company_address"></textarea>
+          <span class="help-block with-errors"></span>
+        </div>
+      </div>
+      <div class="form-group row align-items-center">
+        <label for="company_phone_number" class="form-control-label col-sm-3">Telepon Perusahaan</label>
+        <div class="col-sm-6 col-md-9">
+          <input type="text" name="company_phone_number" class="form-control" id="company_phone_number">
+          <span class="help-block with-errors"></span>
+        </div>
+      </div>
+      <div class="form-group row align-items-center">
+        <label class="form-control-label col-sm-3">Logo Perusahaan</label>
+        <div class="col-sm-6 col-md-9">
+          <div class="show-card"></div>
+          <div class="custom-file">
+            <input type="file" name="company_logo" class="custom-file-input" id="company_logo">
+            <label for="company_logo" class="custom-file-label">Choose File</label>
+            <span class="help-block with-errors"></span>
+          </div>
+          <div class="form-text text-muted">The image must have a maximum size of 1MB</div>
+        </div>
+      </div>
+      <div class="form-group row align-items-center">
+        <label class="form-control-label col-sm-3">Desain Kartu Member</label>
+        <div class="col-sm-6 col-md-9">
+          <div class="show-card"></div>
+          <div class="custom-file">
+            <input type="file" name="member_card" class="custom-file-input" id="member_card">
+            <label for="member_card" class="custom-file-label">Choose File</label>
+            <span class="help-block with-errors"></span>
+          </div>
+          <div class="form-text text-muted">The image must have a maximum size of 1MB</div>
+        </div>
+      </div>
+      <div class="form-group row align-items-center">
+        <label for="member_discount" class="form-control-label col-sm-3">Diskon Member (%)</label>
+        <div class="col-sm-6 col-md-9">
+          <input type="number" name="member_discount" class="form-control" id="member_discount">
+          <span class="help-block with-errors"></span>
+        </div>
+      </div>
+    
+    <div class="form-group row align-items-center">
+     <label for="note_type" class="form-control-label col-sm-3">Tipe Nota</label>
+    <div class="col-sm-6 col-md-9">
       <select id="note_type" class="form-control" name="note_type">
         <option value="0">Nota Kecil</option>
         <option value="1">Nota Besar (PDF)</option>
       </select>
+      <span class="help-block with-errors"></span>
     </div>
   </div>
-
   </div>
-  <div class="box-footer">
-    <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-floppy-o"></i> Simpan Perubahan</button>
+    <div class="card-footer bg-whitesmoke text-md-right">
+      <button type="submit" class="btn btn-primary" id="save-btn">Save Changes</button>
+    </div>
   </div>
 </form>
-    </div>
-  </div>
-</div>
 @endsection
 
 @section('script')
@@ -127,8 +125,8 @@ function showData(){
       $('#member_discount').val(data.member_discount);
       $('#note_type').val(data.note_type);
 
-      d = new Date();
-      $('.show-logo').html('<img src="public/images/'+data.logo+'?'+d.getTime()+'" width="200">');
+      d= new Date();
+      $('.show-logo').html('<img src="public/images/'+data.company_logo+'?'+d.getTime()+'" width="200">');
       $('.show-card').html('<img src="public/images/'+data.member_card+'?'+d.getTime()+'" width="300">');
     },
     error : function(){

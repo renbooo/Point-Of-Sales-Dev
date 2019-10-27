@@ -9,7 +9,7 @@
 <div class="card">
   <div class="card-body">
     <div class="table-responsive">
-        <table class="table table-stripped table-purchase">
+        <table class="table table-stripped table-selling">
             <thead>
                 <tr>
                     <th width="30">No</th>
@@ -59,7 +59,7 @@
 
 	function showDetail(id){
 		$('#modal-detail').modal('show');
-        table1.ajax.url("purchase/"+id+"/show");
+        table1.ajax.url("selling/"+id+"/show");
         table1.ajax.reload();
 	}
 

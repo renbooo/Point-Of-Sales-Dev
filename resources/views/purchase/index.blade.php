@@ -9,35 +9,31 @@
 <div class="card">
   <div class="card-body">
     <div class="dropdown d-inline">
-      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Kelola
-      </button>
+      <button class="btn btn-primary" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-th-large"></i></button>
       <div class="dropdown-menu">
-        <a class="dropdown-item has-icon" onclick="addForm()"><i class="fas fa-edit"></i>Transaksi Baru
+        <a class="dropdown-item has-icon" onclick="addForm()"><i class="fas fa-plus"></i>Transaksi Baru</a>
         @if(!empty(session('purchase_id')))
-        <a class="dropdown-item has-icon" href="{{route('purchase_details.index')}}">Transaksi Aktif</a>
+        <a class="dropdown-item has-icon" href="{{route('purchase_details.index')}}"><i class="fas fa-dollar-sign"></i>Transaksi Aktif</a>
         @endif
-        </a>
       </div>
   </div>
 </div>
   <div class="card-body">
     <div class="table-responsive">
-        <table class="table table-bordered table-striped table-hover js-basic-example dataTable table-purchase">
+        <table class="table table-striped table-purchase">
             <thead>
                 <tr>
-                    <th width="30">No</th>
+                    <th>No</th>
                     <th>Tanggal</th>
                     <th>Supplier</th>
                     <th>Total Item</th>
                     <th>Total Harga</th>
                     <th>Diskon</th>
                     <th>Total Bayar</th>
-                    <th width="100">Aksi</th>
+                    <th>Kelola Data</th>
                 </tr>
             </thead>
-            <tbody>
-            </tbody>
+            <tbody></tbody>
         </table>
     </div>
   </div>
@@ -73,8 +69,8 @@
 	function showDetail(id){
 		$('#modal-detail').modal('show');
 
-		$table1.ajax.url("purchase/"+id+"show");
-		$table1.ajax.reload();
+		table1.ajax.url("purchase/"+id+"/show");
+		table1.ajax.reload();
 	}
 
 	function deleteData(id){

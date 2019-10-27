@@ -20,10 +20,11 @@ class SettingController extends Controller
    public function update(Request $request, $id)
    {
       $setting = Setting::find($id);
-      $setting->company_name   = $request['company_name'];
-      $setting->company_address         = $request['company_address'];
-      $setting->company_phone_number         = $request['company_phone_number'];
-      $setting->note_type         = $request['note_type'];
+      $setting->company_name = $request['company_name'];
+      $setting->company_address = $request['company_address'];
+      $setting->company_phone_number = $request['company_phone_number'];
+      $setting->member_discount = $request['member_discount'];
+      $setting->note_type = $request['note_type'];
       
       if ($request->hasFile('company_logo')) {
          $file = $request->file('company_logo');
@@ -31,7 +32,7 @@ class SettingController extends Controller
          $location = public_path('images');
 
          $file->move($location, $image_name);
-         $setting->company_logo         = $image_name;  
+         $setting->company_logo = $image_name;  
       }
 
       if ($request->hasFile('member_card')) {
@@ -40,7 +41,7 @@ class SettingController extends Controller
          $location = public_path('images');
 
          $file->move($location, $image_name);
-         $setting->member_card   = $image_name;  
+         $setting->member_card = $image_name;  
       }
       $setting->update();
    }

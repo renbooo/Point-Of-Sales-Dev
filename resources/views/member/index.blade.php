@@ -9,19 +9,18 @@
 <div class="card">
   <div class="card-body">
   	<div class="dropdown d-inline">
-      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Kelola
+      <button class="btn btn-primary" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-th-large"></i>
       </button>
       <div class="dropdown-menu">
-      	<a class="dropdown-item has-icon" onclick="addForm()"><i class="fas fa-edit"></i>Tambah Member</a>
-	  	<a class="dropdown-item has-icon" onclick="printCard()"><i class="fas fa-trash"></i>Print Member</a>
+      	<a class="dropdown-item has-icon" onclick="addForm()"><i class="fas fa-plus"></i>Tambah Member</a>
+	  	<a class="dropdown-item has-icon" onclick="printCard()"><i class="fas fa-print"></i>Print Kartu Member</a>
       </div>
   </div>
   <div class="card-body">
     <div class="table-responsive">
     	<form method="POST" id="form-member">
     		{{csrf_field()}}
-        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+        <table class="table table-striped table-hover js-basic-example dataTable">
             <thead>
                 <tr>
                 	<th width="20">

@@ -9,41 +9,42 @@
 <div class="card">
   <div class="card-body">
   	<div class="dropdown d-inline">
-      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Kelola
-      </button>
+      <button class="btn btn-primary" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-th-large"></i></button>
       <div class="dropdown-menu">
-      	<a class="dropdown-item has-icon" onclick="addForm()"><i class="fas fa-edit"></i>Tambah Produk</a>
-	  	<a class="dropdown-item has-icon" onclick="printBarcode()"><i class="fas fa-trash"></i>Print Barcode Produk</a>
+      	<a class="dropdown-item has-icon" onclick="addForm()"><i class="fas fa-plus"></i>Tambah Produk</a>
+	  	<a class="dropdown-item has-icon" onclick="printBarcode()"><i class="fas fa-print"></i>Print Barcode Produk</a>
 	  	<a class="dropdown-item has-icon" onclick="deleteAll()"><i class="fas fa-trash"></i>Hapus Semua Data</a>
       </div>
   </div>
   <div class="card-body">
-    <div class="table-responsive">
+    <div class="table-responsive">       
     	<form method="POST" id="form-product">
     		{{csrf_field()}}
-        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+    	<table class="table table-striped dataTable">
             <thead>
-                <tr>
-                	<th width="20">
-                      <input type="checkbox" class="filled-in" value="1" id="ig_checkbox">
-                      <label for="ig_checkbox"></label>
-                    </th>
-                    <th width="20">No</th>
-                    <th>Kode</th>
-                    <th>Nama</th>
-                    <th>Kategori</th>
-                    <th>Merek</th>
-                    <th>Harga Beli</th>
-                    <th>Harga Jual</th>
-                    <th>Diskon</th>
-                    <th>Stok</th>
-                    <th width="100">Aksi</th>
-                </tr>
-            </thead>
+            <tr>
+              <th>
+                  <input type="checkbox" value="1" id="ig_checkbox">
+                  <label for="ig_checkbox">&nbsp;</label>
+              </th>
+              <th>No</th>
+	            <th>Kode</th>
+	            <th>Nama</th>
+	            <th>Kategori</th>
+	            <th>Merek</th>
+	            <th>Harga Beli</th>
+	            <th>Harga Jual</th>
+	            <th>Diskon</th>
+	            <th>Stok</th>
+	            <th>Kelola Data</th>
+            </tr>
+        </thead>
             <tbody>
+            	<tr>
+            	</tr>
             </tbody>
-        </table>
+          </table>
+        
     	</form>
     </div>
   </div>

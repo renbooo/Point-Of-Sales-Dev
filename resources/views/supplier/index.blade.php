@@ -8,12 +8,16 @@
 <!-- Body Copy -->
 <div class="card">
   <div class="card-body">
-  	<a class="btn btn-primary text-white" onclick="addForm()">Tambah Supplier</a>
+  	<div class="dropdown d-inline">
+      <button class="btn btn-primary" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-th-large"></i></button>
+      <div class="dropdown-menu">
+      	<a class="dropdown-item has-icon" onclick="addForm()"><i class="fas fa-plus"></i>Tambah Supplier</a>
+      </div>
 </div>
   <div class="card-body">
     <div class="table-responsive">
         <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+            <table class="table table-striped table-hover js-basic-example dataTable">
                 <thead>
                     <tr>
                         <th>No</th>

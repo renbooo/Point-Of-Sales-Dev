@@ -9,7 +9,7 @@
             
 <div class="modal-body">
    
-   <table class="table table-striped tabel-detail">
+   <table class="table table-striped table-detail">
       <thead>
          <tr>
             <th width="30">No</th>

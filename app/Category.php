@@ -10,6 +10,6 @@ class Category extends Model
     protected $primaryKey = 'category_id';
 
     public function product(){
-    	return $this->hasMany('App\Produk', 'category_id');
+    	return $this->hasMany('App\Product', 'category_id');
     }
 }

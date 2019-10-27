@@ -10,7 +10,7 @@ function spelling($number){
 		$spell = spelling($number - 10) . " belas";
 	}
 	else if ($number < 100){
-		$spell = spelling($angka/10)." puluh" . spelling($number % 10);
+		$spell = spelling($number/10)." puluh" . spelling($number % 10);
 	}
 	else if ($number < 200){
 		$spell = " seratus" . spelling($number - 100);

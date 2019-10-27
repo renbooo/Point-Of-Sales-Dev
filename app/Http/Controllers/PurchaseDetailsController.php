@@ -33,13 +33,13 @@ class PurchaseDetailsController extends Controller
             $row[] = "Rp. ".currency_format($list->purchase_price);
             $row[] = "<input type='number' class='form-control' name='total_$list->purchase_details_id' value='$list->total' onChange='changeCount($list->purchase_details_id)'>";
             $row[] = "Rp. ".currency_format($list->purchase_price * $list->total);
-            $row[] = '<a onclick="deleteItem('.$list->purchase_details_id.')" class="btn btn-danger btn-sm"><i class="material-icons">create</i></a>';
+            $row[] = '<a onclick="deleteItem('.$list->purchase_details_id.')" class="btn btn-danger btn-sm"><i class="fas fa-trash text-white"></i></a>';
             $data[] = $row;
 
             $total += $list->purchase_price * $list->total;
             $total_item += $list->total;
         }
-        $data[] = array("<span class='hide total'>$total</span><span class='hide total_item'>$total_item</span>", "", "", "", "", "", "");
+        $data[] = array("<span class='d-none total'>$total</span><span class='d-none total_item'>$total_item</span>", "", "", "", "", "", "");
         $output = array("data"=>$data);
         return response()->json($output);
     }
@@ -54,7 +54,7 @@ class PurchaseDetailsController extends Controller
         $detail->save();
     }
     public function update(Request $request, $id){
-        $input_name = "jumlah ". $id;
+        $input_name = "total_". $id;
         $detail = PurchaseDetails::find($id);
         $detail->total = $request[$input_name];
         $detail->sub_total = $detail->purchase_price*$request[$input_name];

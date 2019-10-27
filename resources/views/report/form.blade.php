@@ -13,17 +13,17 @@
 <div class="modal-body">
    
    <div class="form-group">
-      <label for="begin" class="col-md-3 control-label">Tanggal Awal</label>
+      <label for="begin">Tanggal Awal</label>
       <div class="col-md-6">
-         <input id="begin" type="text" class="form-control" name="begin" autofocus required>
+         <input id="begin" type="date" class="form-control" name="begin" autofocus required>
          <span class="help-block with-errors"></span>
       </div>
    </div>
 
    <div class="form-group">
-      <label for="end" class="col-md-3 control-label">Tanggal Akhir</label>
+      <label for="end">Tanggal Akhir</label>
       <div class="col-md-6">
-         <input id="end" type="text" class="form-control" name="end" autofocus required>
+         <input id="end" type="date" class="form-control" name="end" autofocus required>
          <span class="help-block with-errors"></span>
       </div>
    </div>

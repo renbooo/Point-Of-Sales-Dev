@@ -8,17 +8,20 @@
 <!-- Body Copy -->
 <div class="card">
   <div class="card-body">
-  	<a class="btn btn-primary text-white" onclick="addForm()">Tambah Pengguna</a>
-</div>
+  	<button class="btn btn-primary" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-th-large"></i></button>
+      <div class="dropdown-menu">
+      	<a class="dropdown-item has-icon" onclick="addForm()"><i class="fas fa-plus"></i>Tambah Pengguna</a>
+      </div>
+  </div>
   <div class="card-body">
     <div class="table-responsive">
-        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+        <table class="table table-striped table-hover js-basic-example dataTable">
             <thead>
                 <tr>
                     <th>No</th>
                     <th>Nama User</th>
                     <th>Email</th>
-                    <th>Aksi</th>
+                    <th>Kelola Data</th>
                 </tr>
             </thead>
             <tbody>

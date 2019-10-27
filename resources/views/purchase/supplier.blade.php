@@ -6,8 +6,8 @@
             </div>
 				
                 <div class="modal-body">
-                    <div class="body table-responsive table-supplier">
-                            <table class="table">
+                    <div class="body table-responsive">
+                            <table class="table table-striped table-supplier">
                                 <thead>
                                     <tr>
                                         <th>Nama Supplier</th>

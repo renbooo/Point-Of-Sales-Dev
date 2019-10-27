@@ -21,7 +21,7 @@
                                     <tr>
                                         <td>{{$data->product_code}}</td>
                                         <td>{{$data->product_name}}</td>
-                                        <td>Rp. {{currency_format($data->product_code)}}</td>
+                                        <td>Rp. {{currency_format($data->purchase_price)}}</td>
                                         <td><a onclick="selectItem({{$data->product_code}})">Pilih</a></td>
                                     </tr>
                                     @endforeach

@@ -22,7 +22,8 @@ class ProductController extends Controller
     	foreach ($product as $list) {
     		$no ++;
             $row = array();
-            $row[] = "<input type='checkbox' name='id[]'' id='ig_checkbox' value='".$list->product_id."'><label for='ig_checkbox'></label>";
+            $row[] = "
+            <input type='checkbox' name='id[]'' id='ig_checkbox' value='".$list->product_id."'><label for='ig_checkbox'></label>";
             $row[] = $no;
             $row[] = $list->product_code;
             $row[] = $list->product_name;
@@ -32,7 +33,7 @@ class ProductController extends Controller
             $row[] = "Rp. ".currency_format($list->selling_price);
             $row[] = $list->discount."%";
             $row[] = $list->product_stock;
-            $row[] = '<tr>
+            $row[] = '
                     <div class="dropdown d-inline">
                       <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Aksi
@@ -40,7 +41,7 @@ class ProductController extends Controller
                       <div class="dropdown-menu">
                         <a onclick="editForm('.$list->product_id.')" class="dropdown-item has-icon"><i class="fas fa-edit"></i>Edit Data</a>
                         <a onclick="deleteData('.$list->product_id.')" class="dropdown-item has-icon"><i class="fas fa-trash"></i>Hapus Data</a>
-                      </div></tr>';
+                      </div>';
             $data[] = $row;
     	}
     	return Datatables::of($data)->escapeColumns([])->make(true);

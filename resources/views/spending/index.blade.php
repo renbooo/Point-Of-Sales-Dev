@@ -8,18 +8,22 @@
 <!-- Body Copy -->
 <div class="card">
   <div class="card-body">
-  	<a class="btn btn-primary text-white" onclick="addForm()">Tambah Pengeluaran</a>
+  	<div class="dropdown d-inline">
+      <button class="btn btn-primary" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-th-large"></i></button>
+      <div class="dropdown-menu">
+      	<a class="dropdown-item has-icon" onclick="addForm()"><i class="fas fa-plus"></i>Tambah Pengeluaran</a>
+      </div>
 </div>
   <div class="card-body">
     <div class="table-responsive">
-         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+         <table class="table table-striped table-hover js-basic-example dataTable">
             <thead>
                 <tr>
                     <th width="20">No</th>
                     <th>Tanggal</th>
                     <th>Jenis Pengeluaran</th>
                     <th>Nominal</th>
-                    <th width="100">Aksi</th>
+                    <th>Kelola Data</th>
                 </tr>
             </thead>
             <tbody>

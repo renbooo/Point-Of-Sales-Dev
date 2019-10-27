@@ -51,7 +51,6 @@ class ReportController extends Controller
    public function listData($begin, $end)
    {   
      $data = $this->getData($begin, $end);
-
      $output = array("data" => $data);
      return response()->json($output);
    }
@@ -67,7 +66,6 @@ class ReportController extends Controller
      $date_begin = $begin;
      $date_end = $end;
      $data = $this->getData($begin, $end);
-
      $pdf = PDF::loadView('report.pdf', compact('date_begin', 'date_end', 'data'));
      $pdf->setPaper('a4', 'potrait');
      

@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ config('app.name', 'Laravel') }}</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{asset('stisla/modules/bootstrap/css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{asset('stisla/modules/fontawesome/css/all.min.css')}}">
+  {{-- <link rel="stylesheet" href="{{asset('stisla/modules/datepicker/datepicker3.css')}}">
+ --}}  {{-- <link rel="stylesheet" href="{{asset('stisla/modules/bootstrap-daterangepicker/daterangepicker.css')}}"> --}}
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
   <!-- Template CSS -->
@@ -99,9 +102,11 @@
               <a href="features-activities.html" class="dropdown-item has-icon">
                 <i class="fas fa-bolt"></i> Activities
               </a>
-              <a href="features-settings.html" class="dropdown-item has-icon">
+              @if(Auth::user()->level==1)
+              <a href="{{ route('setting.index') }}" class="dropdown-item has-icon">
                 <i class="fas fa-cog"></i> Settings
               </a>
+               @endif
               <div class="dropdown-divider"></div>
               <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                 <i class="fas fa-sign-out-alt"></i> Logout
@@ -181,15 +186,9 @@
                     <span>Laporan</span>
                 </a>
             </li>
-            <li>
-                <a class="nav-link" href="{{ route('setting.index') }}">
-                    <i class="fas fa-cog"></i>
-                    <span>Setting</span>
-                </a>
-            </li>
             @else
             <li>
-                <a class="nav-link" href="{{route('category.index')}}">
+                <a class="nav-link" href="{{route('transaksi.index')}}">
                     <i class="fas fa-fire"></i>
                     <span>Transaksi</span>
                 </a>
@@ -236,6 +235,8 @@
   <script src="{{asset('stisla/modules/nicescroll/jquery.nicescroll.min.js')}}"></script>
   <script src="{{asset('stisla/modules/moment.min.js')}}"></script>
   <script src="{{asset('stisla/js/stisla.js')}}"></script>
+  {{-- <script src="{{asset('stisla/modules/datepicker/bootstrap-datepicker.js')}}"></script> --}}
+  {{-- <script src="{{asset('stisla/modules/bootstrap-daterangepicker/daterangepicker.js')}}"></script> --}}
   
   <!-- JS Libraies -->
   <script src="{{asset('stisla/modules/jquery-ui/jquery-ui.min.js')}}"></script>

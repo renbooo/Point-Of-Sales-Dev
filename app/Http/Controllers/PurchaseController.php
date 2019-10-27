@@ -24,25 +24,30 @@ class PurchaseController extends Controller
             $no ++;
             $row = array();
             $row[] = $no;
-            $row[] = indo_date(substr($list->create_at, 0, 10), false);
+            $row[] = indo_date(substr($list->created_at, 0, 10), false);
             $row[] = $list->supplier_name;
             $row[] = $list->total_item;
             $row[] = "Rp. ".currency_format($list->total_price);
             $row[] = $list->discount."%";
             $row[] = "Rp. ".currency_format($list->pay);
-            $row[] = '<tr>
-                     <a onclick="showDetail('.$list->purchase_id.')" class="btn btn-warning btn-sm"><i class="material-icons">create</i></a>
-                     <a onclick="deleteData('.$list->purchase_id.')" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></a></tr>';
+            $row[] = '<div class="dropdown d-inline">
+                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Aksi
+                      </button>
+                      <div class="dropdown-menu">
+                        <a onclick="showDetail('.$list->purchase_id.')" class="dropdown-item has-icon"><i class="fas fa-eye"></i>Lihat Data</a>
+                        <a onclick="deleteData('.$list->purchase_id.')" class="dropdown-item has-icon"><i class="fas fa-trash"></i>Hapus Data</a>
+                      </div>';
             $data[] = $row;
         }
         $output = array("data" => $data);
         return response()->json($output);
     }
-    public function show(){
-        $purchase = PurchaseDetails::leftJoin('product', 'product.product_code', '=', 'purchase_details.product_code')->where('purchase_id', '=', $id)->get();
+    public function show($id){
+        $detail = PurchaseDetails::leftJoin('product', 'product.product_code', '=', 'purchase_details.product_code')->where('purchase_id', '=', $id)->get();
         $no = 0;
         $data = array();
-        foreach ($details as $list) {
+        foreach ($detail as $list) {
             $no ++;
             $row = array();
             $row[] = $no;
@@ -81,7 +86,7 @@ class PurchaseController extends Controller
         $detail = PurchaseDetails::where('purchase_id', '=', $request['purchase_id'])->get();
         foreach ($detail as $data) {
         	$product = Product::where('product_code', '=', $data->product_code)->first();
-        	$product->stock += $data->total;
+        	$product->product_stock += $data->total;
         	$product->update();
         }
         return Redirect::route('purchase.index');
