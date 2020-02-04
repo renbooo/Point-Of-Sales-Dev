@@ -8,7 +8,7 @@
    </div>
 				
 <div class="modal-body">
-	<table class="table table-striped tabel-product">
+	<table class="table table-striped table-product">
 		<thead>
 		   <tr>
 		      <th>Kode Produk</th>

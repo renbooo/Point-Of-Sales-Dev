@@ -12,7 +12,7 @@
         <table class="table table-stripped table-selling">
             <thead>
                 <tr>
-                    <th width="30">No</th>
+                    <th>No</th>
                     <th>Tanggal</th>
                     <th>Kode Member</th>
                     <th>Total Item</th>
@@ -20,7 +20,7 @@
                     <th>Diskon</th>
                     <th>Total Bayar</th>
                     <th>Kasir</th>
-                    <th width="100">Kelola Data</th>
+                    <th>Kelola Data</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -71,7 +71,7 @@
                 type    : "POST",
                 data    : {'_method' : 'DELETE', '_token' : $('meta[name=csrf-token]').attr('content')},
                 success : function(data){
-                    table.ajax.reload(function();
+                    table.ajax.reload();
                 },
                 error   : function(){
                     alert("Tidak dapat menghapus data");

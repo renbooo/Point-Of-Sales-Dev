@@ -4,21 +4,19 @@
   Detail Penjualan
 @endsection
 
-@section('content')     
-<div class="row">
-  <div class="col-xs-12">
-    <div class="box">
-   
-      <div class="box-body">
+@section('content')
+<!-- Body Copy -->
+<div class="card">
+  <div class="card-body">     
 
 <form class="form form-horizontal form-product" method="post">
 {{ csrf_field() }}  
   <input type="hidden" name="selling_id" value="{{ $selling_id }}">
   <div class="form-group">
-      <label for="product-code" class="col-md-2 control-label">Kode Produk</label>
+      <label for="product_code" class="col-md-2 control-label">Kode Produk</label>
       <div class="col-md-5">
         <div class="input-group">
-          <input id="product_code" type="text" class="form-control" name="product-code" autofocus required>
+          <input id="product_code" type="text" class="form-control" name="product_code" autofocus required>
           <span class="input-group-btn">
             <button onclick="showProduct()" type="button" class="btn btn-info">...</button>
           </span>
@@ -29,7 +27,8 @@
 
 <form class="form-shopping-cart">
 {{ csrf_field() }} {{ method_field('PATCH') }}
-<table class="table table-striped tabel-selling">
+<div class="table-responsive"> 
+<table class="table table-striped table-selling">
 <thead>
    <tr>
       <th width="30">No</th>
@@ -44,11 +43,14 @@
 </thead>
 <tbody></tbody>
 </table>
+</div>
 </form>
-
+</div>
+<div class="card-body">
+        <div class="row">
   <div class="col-md-8">
-     <div id="show-pay" style="background: #dd4b39; color: #fff; font-size: 80px; text-align: center; height: 120px"></div>
-     <div id="show-spelling" style="background: #3c8dbc; color: #fff; font-size: 25px; padding: 10px"></div>
+    <div id="show-pay" style="background: #d71149; color:#ffffff; font-size:80px; text-align: center; height: 250px"></div>
+    <div id="show-spelling" style="background: #ffffff; color: #d71149; font-size: 25px; border:5px solid #d71149; padding: 10px"></div>
   </div>
   <div class="col-md-4">
     <form class="form form-horizontal form-selling" method="post" action="transaction/save">
@@ -59,17 +61,17 @@
       <input type="hidden" name="pay" id="pay">
 
       <div class="form-group">
-        <label for="total_rp" class="col-md-4 control-label">Total</label>
-        <div class="col-md-8">
+        <label for="total_rp" class="control-label">Total</label>
+        <div class="form-line">
           <input type="text" class="form-control" id="total_rp" readonly>
         </div>
       </div>
 
       <div class="form-group">
-        <label for="member" class="col-md-4 control-label">Kode Member</label>
-        <div class="col-md-8">
+        <label for="member_code" class="control-label">Kode Member</label>
+        <div class="form-line">
           <div class="input-group">
-            <input id="member" type="text" class="form-control" name="member" value="0">
+            <input id="member_code" type="text" class="form-control" name="member_code" value="0">
             <span class="input-group-btn">
               <button onclick="showMember()" type="button" class="btn btn-info">...</button>
             </span>
@@ -78,34 +80,35 @@
       </div>
 
       <div class="form-group">
-        <label for="discount" class="col-md-4 control-label">Diskon</label>
-        <div class="col-md-8">
+        <label for="discount" class="control-label">Diskon</label>
+       
           <input type="text" class="form-control" name="discount" id="discount" value="0" readonly>
-        </div>
+       
       </div>
 
       <div class="form-group">
-        <label for="pay_rp" class="col-md-4 control-label">Bayar</label>
-        <div class="col-md-8">
+        <label for="pay_rp" class="control-label">Bayar</label>
+        
           <input type="text" class="form-control" id="pay_rp" readonly>
-        </div>
+        
       </div>
 
       <div class="form-group">
-        <label for="received" class="col-md-4 control-label">Diterima</label>
-        <div class="col-md-8">
+        <label for="received" class="control-label">Diterima</label>
+        
           <input type="number" class="form-control" value="0" name="received" id="received">
-        </div>
+        
       </div>
 
       <div class="form-group">
-        <label for="remaining" class="col-md-4 control-label">Kembali</label>
-        <div class="col-md-8">
+        <label for="remaining" class="control-label">Kembali</label>
+        
           <input type="text" class="form-control" id="remaining" value="0" readonly>
-        </div>
+        
       </div>
 
     </form>
+  </div>
   </div>
 
       </div>
@@ -113,21 +116,19 @@
       <div class="box-footer">
         <button type="submit" class="btn btn-primary pull-right save"><i class="fa fa-floppy-o"></i> Simpan Transaksi</button>
       </div>
-    </div>
-  </div>
 </div>
 
 @endsection
 
 @section('script')
-@include('selling_detail.product')
-@include('selling_detail.member')
+@include('selling_details.product')
+@include('selling_details.member')
 <script type="text/javascript">
 var table;
 $(function(){
-  $('.tabel-product').DataTable();
+  $('.table-product').DataTable();
 
-  table = $('.tabel-selling').DataTable({
+  table = $('.table-selling').DataTable({
      "dom" : 'Brt',
      "bSort" : false,
      "processing" : true,
@@ -145,7 +146,7 @@ $(function(){
 
    $('body').addClass('sidebar-collapse');
 
-   $('#product-code').change(function(){
+   $('#product_code').change(function(){
       addItem();
    });
 
@@ -153,7 +154,7 @@ $(function(){
      return false;
    });
 
-   $('#member').change(function(){
+   $('#member_code').change(function(){
       selectMember($(this).val());
    });
 
@@ -176,7 +177,7 @@ function addItem(){
     type : "POST",
     data : $('.form-product').serialize(),
     success : function(data){
-      $('#product-code').val('').focus();
+      $('#product_code').val('').focus();
       table.ajax.reload(function(){
          loadForm($('#discount').val());
       });             
@@ -195,8 +196,8 @@ function showMember(){
   $('#modal-member').modal('show');
 }
 
-function selectItem(kode){
-  $('#product_code').val(product-code);
+function selectItem(product_code){
+  $('#product_code').val(product_code);
   $('#modal-product').modal('hide');
   addItem();
 }
@@ -218,10 +219,10 @@ function changeCount(id){
      });
 }
 
-function selectMember(product_code){
+function selectMember(member_code){
   $('#modal-member').modal('hide');
-  $('#discount').val('{{ $setting->discount_member }}');
-  $('#member').val(product_code);
+  $('#discount').val('{{ $setting->member_discount }}');
+  $('#member_code').val(member_code);
   loadForm($('#discount').val());
   $('#received').val(0).focus().select();
 }
@@ -244,7 +245,7 @@ function deleteItem(id){
    }
 }
 
-function loadForm(diskon=0, diterima=0){
+function loadForm(discount=0, received=0){
   $('#total').val($('.total').text());
   $('#total_item').val($('.total_item').text());
 
@@ -256,12 +257,12 @@ function loadForm(diskon=0, diterima=0){
          $('#total_rp').val("Rp. "+data.total_rp);
          $('#pay_rp').val("Rp. "+data.pay_rp);
          $('#pay').val(data.pay);
-         $('#show-pay').html("<small>Bayar:</small> Rp. "+data.pay_rp);
+         $('#show-pay').html("<small>Bayar: </small><br>Rp. "+data.pay_rp);
          $('#show-spelling').text(data.spelling);
         
          $('#remaining').val("Rp. "+data.remaining_rp);
          if($('#received').val() != 0){
-            $('#show-pay').html("<small>Kembali:</small> Rp. "+data.remaining_rp);
+            $('#show-pay').html("<small>Kembali: </small><br>Rp. "+data.remaining_rp+"</small>");
             $('#show-spelling').text(data.remaining_spelling);
          }
        },

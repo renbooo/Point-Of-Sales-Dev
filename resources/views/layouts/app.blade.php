@@ -16,7 +16,7 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{asset('stisla/css/style.css')}}">
   <link rel="stylesheet" href="{{asset('stisla/css/components.css')}}">
-
+</head>
 <body>
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
@@ -32,61 +32,6 @@
             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
             <div class="search-backdrop"></div>
             <div class="search-result">
-              <div class="search-header">
-                Histories
-              </div>
-              <div class="search-item">
-                <a href="#">How to hack NASA using CSS</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-item">
-                <a href="#">Kodinger.com</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-item">
-                <a href="#">#Stisla</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-header">
-                Result
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="assets/img/products/product-3-50.png" alt="product">
-                  oPhone S9 Limited Edition
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="assets/img/products/product-2-50.png" alt="product">
-                  Drone X2 New Gen-7
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="assets/img/products/product-1-50.png" alt="product">
-                  Headphone Blitz
-                </a>
-              </div>
-              <div class="search-header">
-                Projects
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <div class="search-icon bg-danger text-white mr-3">
-                    <i class="fas fa-code"></i>
-                  </div>
-                  Stisla Admin Template
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <div class="search-icon bg-primary text-white mr-3">
-                    <i class="fas fa-laptop"></i>
-                  </div>
-                  Create a new Homepage Design
-                </a>
-              </div>
             </div>
           </div>
         </form>
@@ -95,12 +40,8 @@
             <img alt="image" src="{{asset('images/'.Auth::user()->photos)}}" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">Hi, {{Auth::user()->name}} </div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-title">Logged in 5 min ago</div>
-              <a href="features-profile.html" class="dropdown-item has-icon">
+              <a href="{{ route('user.profile') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
-              </a>
-              <a href="features-activities.html" class="dropdown-item has-icon">
-                <i class="fas fa-bolt"></i> Activities
               </a>
               @if(Auth::user()->level==1)
               <a href="{{ route('setting.index') }}" class="dropdown-item has-icon">
@@ -188,13 +129,13 @@
             </li>
             @else
             <li>
-                <a class="nav-link" href="{{route('transaksi.index')}}">
+                <a class="nav-link" href="{{route('transaction.index')}}">
                     <i class="fas fa-fire"></i>
                     <span>Transaksi</span>
                 </a>
             </li>
             <li>
-                <a class="nav-link" href="{{route('category.index')}}">
+                <a class="nav-link" href="{{route('transaction.new')}}">
                     <i class="fas fa-fire"></i>
                     <span>Transaksi Baru</span>
                 </a>
@@ -237,10 +178,9 @@
   <script src="{{asset('stisla/js/stisla.js')}}"></script>
   {{-- <script src="{{asset('stisla/modules/datepicker/bootstrap-datepicker.js')}}"></script> --}}
   {{-- <script src="{{asset('stisla/modules/bootstrap-daterangepicker/daterangepicker.js')}}"></script> --}}
-  
   <!-- JS Libraies -->
   <script src="{{asset('stisla/modules/jquery-ui/jquery-ui.min.js')}}"></script>
-
+<script src="{{asset('stisla/modules/chart.min.js')}}"></script>
   <!-- Page Specific JS File -->
   <script src="{{asset('stisla/js/page/components-table.js')}}"></script>
   

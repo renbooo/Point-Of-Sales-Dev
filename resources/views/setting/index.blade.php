@@ -38,7 +38,7 @@
       <div class="form-group row align-items-center">
         <label class="form-control-label col-sm-3">Logo Perusahaan</label>
         <div class="col-sm-6 col-md-9">
-          <div class="show-card"></div>
+          <div class="show-logo"></div>
           <div class="custom-file">
             <input type="file" name="company_logo" class="custom-file-input" id="company_logo">
             <label for="company_logo" class="custom-file-label">Choose File</label>
@@ -126,13 +126,52 @@ function showData(){
       $('#note_type').val(data.note_type);
 
       d= new Date();
-      $('.show-logo').html('<img src="public/images/'+data.company_logo+'?'+d.getTime()+'" width="200">');
-      $('.show-card').html('<img src="public/images/'+data.member_card+'?'+d.getTime()+'" width="300">');
+      $('.show-logo').html('<img src="/images/'+data.company_logo+'?'+d.getTime()+')" width="200">');
+      $('.show-card').html('<img src="/images/'+data.member_card+'?'+d.getTime()+'" width="300">');
     },
     error : function(){
       alert("Tidak dapat menyimpan data!");
     }   
   });
 }
+
+// function showData(){
+//   $(document).ready(function (e) {
+//  $("#form").on('submit',(function(e) {
+//   e.preventDefault();
+//   $.ajax({
+//   url: "ajaxupload.php",
+//    type: "POST",
+//    data:  new FormData(this),
+//    contentType: false,
+//          cache: false,
+//    processData:false,
+//    beforeSend : function()
+//    {
+//     //$("#preview").fadeOut();
+//     $("#err").fadeOut();
+//    },
+//    success: function(data)
+//       {
+//     if(data=='invalid')
+//     {
+//      // invalid file format.
+//      $("#err").html("Invalid File !").fadeIn();
+//     }
+//     else
+//     {
+//      // view uploaded file.
+//      $("#preview").html(data).fadeIn();
+//      $("#form")[0].reset(); 
+//     }
+//       },
+//      error: function(e) 
+//       {
+//     $("#err").html(e).fadeIn();
+//       }          
+//     });
+//  }));
+// });
+// }
 </script>
 @endsection

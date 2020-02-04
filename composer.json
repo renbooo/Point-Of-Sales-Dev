@@ -13,6 +13,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
+        "mike42/escpos-php": "^3.0",
         "milon/barcode": "^6.0",
         "yajra/laravel-datatables-oracle": "^9.0"
     },

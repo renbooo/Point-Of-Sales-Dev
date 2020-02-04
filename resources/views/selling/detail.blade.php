@@ -6,8 +6,8 @@
             </div>
 				
                 <div class="modal-body">
-                    <div class="body table-responsive table-detail">
-                            <table class="table">
+                    <div class="body table-responsive">
+                            <table class="table table-detail">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -29,4 +29,3 @@
 	            </div>
         </div>
     </div>
-</div>

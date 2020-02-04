@@ -54,7 +54,9 @@ class HomeController extends Controller
         $supplier = Supplier::count();
         $member = Member::count();
 
-        if(Auth::user()->level == 1) return view('home.admin', compact('category', 'product', 'supplier', 'member', 'begin', 'end', 'data_income', 'data_date'));
-        else return view('home.kasir', compact('setting'));
+        if(Auth::user()->level == 1) 
+          return view('home.admin', compact('category', 'product', 'supplier', 'member', 'begin', 'end', 'data_income', 'data_date'));
+        else 
+          return view('home.cashier', compact('setting'));
     }
 }

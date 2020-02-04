@@ -67,11 +67,8 @@ Route::group(['middleware' => 'web'], function(){
 	Route::get('user/profile', 'UserController@show')->name('user.profile');
 	Route::patch('user/{id}/change', 'UserController@changeProfile');
 
-	Route::get('
-transaction/new', 'SellingDetailsController@newSession')->name('transaction.new');
-   Route::get('
-transaction/{id}/data', 'SellingDetailsController@listData')->name('
-transaction.data');
+	Route::get('transaction/new', 'SellingDetailsController@newSession')->name('transaction.new');
+   Route::get('transaction/{id}/data', 'SellingDetailsController@listData')->name('transaction.data');
    Route::get('transaction/printnote', 'SellingDetailsController@printNote')->name('transaction.print');
    Route::get('transaction/notepdf', 'SellingDetailsController@notePDF')->name('transaction.pdf');
    Route::post('transaction/save', 'SellingDetailsController@saveData');

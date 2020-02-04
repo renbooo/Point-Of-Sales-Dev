@@ -30,7 +30,7 @@ class ReportController extends Controller
        $total_purchase = Purchase::where('created_at', 'LIKE', "$date%")->sum('pay');
        $total_spending = Spending::where('created_at', 'LIKE', "$date%")->sum('nominal');
 
-       $income = $total_selling - $total_purchase - $total_selling;
+       $income = $total_selling - $total_purchase - $total_spending;
        $total_income += $income;
 
        $no ++;

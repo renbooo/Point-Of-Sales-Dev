@@ -30,9 +30,7 @@ class SellingDetailsController extends Controller
    public function listData($id)
    {
    
-     $detail = SellingDetails::leftJoin('product', 'product.product_code', '=', 'selling_details.product_code')
-        ->where('selling_id', '=', $id)
-        ->get();
+     $detail = SellingDetails::leftJoin('product', 'product.product_code', '=', 'selling_details.product_code')->where('selling_id', '=', $id)->get();
      $no = 0;
      $data = array();
      $total = 0;
@@ -55,7 +53,7 @@ class SellingDetailsController extends Controller
        $total_item += $list->total;
      }
 
-     $data[] = array("<span class='hide total'>$total</span><span class='hide total_item'>$total_item</span>", "", "", "", "", "", "", "");
+     $data[] = array("<span class='d-none total'>$total</span><span class='d-none total_item'>$total_item</span>", "", "", "", "", "", "", "");
     
      $output = array("data" => $data);
      return response()->json($output);
@@ -64,7 +62,6 @@ class SellingDetailsController extends Controller
    public function store(Request $request)
    {
         $product = Product::where('product_code', '=', $request['product_code'])->first();
-
         $detail = new SellingDetails;
         $detail->selling_id = $request['selling_id'];
         $detail->product_code = $request['product_code'];
@@ -124,7 +121,7 @@ class SellingDetailsController extends Controller
       $detail = SellingDetails::where('selling_id', '=', $request['selling_id'])->get();
       foreach($detail as $data){
         $product = Product::where('product_code', '=', $data->product_code)->first();
-        $product->stock -= $data->total;
+        $product->product_stock -= $data->total;
         $product->update();
       }
       return Redirect::route('transaction.print');
@@ -140,12 +137,12 @@ class SellingDetailsController extends Controller
         "pay_rp" => currency_format($pay),
         "spelling" => ucwords(spelling($pay))." Rupiah",
         "remaining_rp" => currency_format($remaining),
-        "remaining_spelling" => ucwords(remaining($remaining))." Rupiah"
+        "remaining_spelling" => ucwords(spelling($remaining))." Rupiah"
       );
      return response()->json($data);
    }
 
-   public function printNota()
+   public function printNote()
    {
       $detail = SellingDetails::leftJoin('product', 'product.product_code', '=', 'selling_details.product_code')
         ->where('selling_id', '=', session('selling_id'))
@@ -154,7 +151,7 @@ class SellingDetailsController extends Controller
       $selling = Selling::find(session('selling_id'));
       $setting = Setting::find(1);
       
-      if($setting->nota_type == 0){
+      if($setting->note_type == 0){
         $handle = printer_open(); 
         printer_start_doc($handle, "Nota");
         printer_start_page($handle);
@@ -221,7 +218,7 @@ class SellingDetailsController extends Controller
       return view('selling_details.success', compact('setting'));
    }
 
-   public function notaPDF(){
+   public function notePDF(){
      $detail = SellingDetails::leftJoin('product', 'product.product_code', '=', 'selling_details.product_code')
         ->where('selling_id', '=', session('selling_id'))
         ->get();
@@ -230,7 +227,7 @@ class SellingDetailsController extends Controller
       $setting = Setting::find(1);
       $no = 0;
      
-     $pdf = PDF::loadView('selling_details.notapdf', compact('detail', 'selling', 'setting', 'no'));
+     $pdf = PDF::loadView('selling_details.notepdf', compact('detail', 'selling', 'setting', 'no'));
      $pdf->setPaper(array(0,0,550,440), 'potrait');      
       return $pdf->stream();
    }

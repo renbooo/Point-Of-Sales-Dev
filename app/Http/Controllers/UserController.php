@@ -60,10 +60,11 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
     }
-    public function show(){
-    	$user = Auth::user();
-    	return view('user.profile', compact('user'));
-    }
+    public function show()
+   {
+      $user = Auth::user();
+      return view('user.profile', compact('user')); 
+   }
     public function changeProfile(Request $request, $id){
     	$msg = "success";
     	$user = User::find($id);
@@ -76,7 +77,7 @@ class UserController extends Controller
     	}
     	if ($request->hasFile('photos')) {
     		$file = $request->file('photos');
-    		$image_name = "user_photo ".$id.".".$file->getClientOriginalExtension();
+    		$image_name = "photo_profile".$id.".".$file->getClientOriginalExtension();
     		$locate = public_path('images');
 
     		$file->move($locate, $image_name);

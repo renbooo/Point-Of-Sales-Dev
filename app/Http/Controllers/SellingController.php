@@ -14,7 +14,7 @@ class SellingController extends Controller
         return view('selling.index');
     }
     public function listData(){
-        $selling = Selling::leftJoin('users', 'users.id', '=', 'selling.id')->select('users.*', 'selling.*', 'selling.created_at as date')->orderBy('selling.selling_id', 'asc')->get();
+        $selling = Selling::leftJoin('users', 'users.id', '=', 'selling.users_id')->select('users.*', 'selling.*', 'selling.created_at as date')->orderBy('selling.selling_id', 'asc')->get();
         $no = 0;
         $data = array();
         foreach ($selling as $list) {

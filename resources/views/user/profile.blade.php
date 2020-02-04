@@ -1,46 +1,68 @@
 @extends('layouts.app')
 
-@section('title')
+@section('content-header')
 	Daftar User
 @endsection
 
-@section('content')
-    <div class="row clearfix">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="header">
-                    <h2>
-                        Daftar User
-                    </h2>
-                    <ul class="header-dropdown m-r--5">
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">more_vert</i>
-                            </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li><a onclick="addForm()">Tambah User</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="body">
-                    <form id="frmFileUpload" class="dropzone form" method="post" enctype="multipart/form-data">
-                    	{{csrf_field()}} {{method_field('PATCH')}}
-                        <div class="dz-message">
-                            <div class="drag-icon-cph">
-                                <i class="material-icons">touch_app</i>
-                            </div>
-                            <h3>Upload Foto Profil</h3>
-                            <em>(Tarik file ke kotak atau klik kotak ini)</em>
-                        </div>
-                        <div class="fallback">
-                            <input name="file" type="file" multiple />
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+@section('content')     
+<div class="card">
+  <div class="card-body">
+
+ <form class="form form-horizontal" data-toggle="validator" method="post" enctype="multipart/form-data">
+   {{ csrf_field() }} {{ method_field('PATCH') }}
+   <div class="box-body">
+
+  <div class="alert alert-info alert-dismissible" style="display:none">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <i class="icon fa fa-check"></i>
+    Perubahan berhasil disimpan.
+  </div>
+
+ <div class="form-group row align-items-center">
+    <label class="form-control-label col-sm-3">Foto Profil</label>
+    <div class="col-sm-6 col-md-9">
+      <div class="show-photo">
+          <img src="{{ asset('images/'.Auth::user()->photos) }}" width="200">
+      </div>
+      <div class="custom-file">
+        <input type="file" name="photos" class="custom-file-input" id="photos">
+        <label for="photos" class="custom-file-label">Choose File</label>
+        <span class="help-block with-errors"></span>
+      </div>
     </div>
+  </div>
+    
+  <div class="form-group row align-items-center">
+    <label for="old_password" class="form-control-label col-sm-3">Password Lama</label>
+    <div class="col-sm-6 col-md-9">
+      <input type="password" name="old_password" class="form-control" id="old_password">
+      <span class="help-block with-errors"></span>
+    </div>
+  </div>
+
+  <div class="form-group row align-items-center">
+    <label for="password" class="form-control-label col-sm-3">Password Baru</label>
+    <div class="col-sm-6 col-md-9">
+      <input type="password" name="password" class="form-control" id="password">
+      <span class="help-block with-errors"></span>
+    </div>
+  </div>
+
+  <div class="form-group row align-items-center">
+      <label for="loop_password" class="form-control-label col-sm-3">Ulangi Password Baru</label>
+      <div class="col-sm-6 col-md-9">
+         <input type="password" class="form-control" data-match="#password" name="loop_password" id="loop_password">
+         <span class="help-block with-errors"></span>
+      </div>
+  </div>
+
+  </div>
+  <div class="card-footer bg-whitesmoke text-md-right">
+    <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-floppy-o"></i> Simpan Perubahan</button>
+  </div>
+</form>
+  </div>
+</div>
 @endsection
 
 @section('script')
