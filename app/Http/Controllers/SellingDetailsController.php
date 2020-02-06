@@ -11,6 +11,8 @@ use App\Product;
 use App\Member;
 use App\Setting;
 use App\SellingDetails;
+use Mike42\Escpos\PrintConnectors\FilePrintConnector;
+use Mike42\Escpos\Printer;
 
 class SellingDetailsController extends Controller
 {
@@ -152,67 +154,85 @@ class SellingDetailsController extends Controller
       $setting = Setting::find(1);
       
       if($setting->note_type == 0){
-        $handle = printer_open(); 
-        printer_start_doc($handle, "Nota");
-        printer_start_page($handle);
+        $connector = new FilePrintConnector("php://stdout");
+        $printer = new Printer($connector);
+        $center = Printer::JUSTIFY_CENTER;
+        $right = Printer::JUSTIFY_RIGHT;
+        $left = Printer::JUSTIFY_LEFT;
+        $printer->setJustification($center);
+        $printer->text($setting->company_name . "\n");
 
-        $font = printer_create_font("Consolas", 100, 80, 600, false, false, false, 0);
-        printer_select_font($handle, $font);
+        $printer->setJustification($center);
+        $printer->text($setting->company_address . "\n");
+        $printer->setJustification($left);        
+        $printer->text(date('Y-m-d'));
+        $printer->setJustification($right);
+        $printer->text(substr(Auth::user()->name . "\n", -15));
+        $printer->setJustification($left);
+        $printer->text("No : ".substr("00000000".$selling->selling_id . "\n", -8));
+        $printer->setJustification($center);
+        $printer->text("============================ \n");
         
-        printer_draw_text($handle, $setting->company_name, 400, 100);
-
-        $font = printer_create_font("Consolas", 72, 48, 400, false, false, false, 0);
-        printer_select_font($handle, $font);
-        printer_draw_text($handle, $setting->company_address, 50, 200);
-
-        printer_draw_text($handle, date('Y-m-d'), 0, 400);
-        printer_draw_text($handle, substr("             ".Auth::user()->name, -15), 600, 400);
-
-        printer_draw_text($handle, "No : ".substr("00000000".$selling->selling_id, -8), 0, 500);
-
-        printer_draw_text($handle, "============================", 0, 600);
+        foreach($detail as $list){
+          $printer->setJustification($left);
+          $printer->text($list->product_code);
+          $printer->setJustification($right);
+          $printer->text($list->product_name. "\n"); 
+          $printer->setJustification($left);
+          $printer->text($list->total." x ".currency_format($list->selling_price));
+          $printer-> setJustification($right);
+          $printer-> text(substr("                ".currency_format($list->selling_price*$list->total) . "\n", -10));           
         
-        $y = 700;
-        
-        foreach($detail as $list){           
-           printer_draw_text($handle, $list->product_code." ".$list->product_name, 0, $y+=100);
-           printer_draw_text($handle, $list->total." x ".currency_format($list->selling_price), 0, $y+=100);
-           printer_draw_text($handle, substr("                ".currency_format($list->selling_price*$list->total), -10), 850, $y);
-
-           if($list->discount != 0){
-              printer_draw_text($handle, "Diskon", 0, $y+=100);
-              printer_draw_text($handle, substr("                      -".currency_format($list->discount/100*$list->sub_total), -10),  850, $y);
-           }
+          if($list->discount != 0){
+              $printer->setJustification($left);
+              $printer->text("Diskon", 0);
+              $printer->setJustification($right);
+              $printer->text(substr("                      -".currency_format($list->discount/100*$list->sub_total). "\n", -10));
+          }
         }
+
+
+        $printer->setJustification($center);
+        $printer->text("---------------------------- \n", 0);
+
+        $printer->setJustification($left);
+        $printer->text("Total Harga: ", 0);
+        $printer->setJustification($right);
+        $printer->text(substr("           ".currency_format($selling->total_price). "\n", -10));
+
+        $printer->setJustification($left);
+        $printer->text("Total Item: ", 0);
+        $printer->setJustification($right);
+        $printer->text(substr("           ".$selling->total_item . "\n", -10));
+
+        $printer->setJustification($left);
+        $printer->text("Diskon Member: ", 0);
+        $printer->setJustification($right);
+        $printer->text(substr("           ".$selling->discount."% \n", -10));
+
+        $printer->setJustification($left);
+        $printer->text("Total Bayar: ", 0);
+        $printer->setJustification($right);
+        $printer->text(substr("            ".currency_format($selling->pay) . "\n", -10));
+
+        $printer->setJustification($left);
+        $printer->text("Diterima: ", 0);
+        $printer->setJustification($right);
+        $printer->text(substr("            ".currency_format($selling->received) . "\n", -10));
+
+        $printer->setJustification($left);
+        $printer->text("Kembali: ", 0);
+        $printer->setJustification($right);
+        $printer->text(substr("            ".currency_format($selling->received-$selling->pay) . "\n", -10));
         
-        printer_draw_text($handle, "----------------------------", 0, $y+=100);
-
-        printer_draw_text($handle, "Total Harga: ", 0, $y+=100);
-        printer_draw_text($handle, substr("           ".currency_format($selling->total_price), -10), 850, $y);
-
-        printer_draw_text($handle, "Total Item: ", 0, $y+=100);
-        printer_draw_text($handle, substr("           ".$selling->total_item, -10), 850, $y);
-
-        printer_draw_text($handle, "Diskon Member: ", 0, $y+=100);
-        printer_draw_text($handle, substr("           ".$selling->discount."%", -10), 850, $y);
-
-        printer_draw_text($handle, "Total Bayar: ", 0, $y+=100);
-        printer_draw_text($handle, substr("            ".currency_format($selling->pay), -10), 850, $y);
-
-        printer_draw_text($handle, "Diterima: ", 0, $y+=100);
-        printer_draw_text($handle, substr("            ".currency_format($selling->received), -10), 850, $y);
-
-        printer_draw_text($handle, "Kembali: ", 0, $y+=100);
-        printer_draw_text($handle, substr("            ".currency_format($selling->received-$selling->pay), -10), 850, $y);
+        $printer->setJustification($center);
+        $printer->text("============================ \n", 0);
+        $printer->setJustification($center);
+        $printer->text("-= TERIMA KASIH =-", 250);
         
-
-        printer_draw_text($handle, "============================", 0, $y+=100);
-        printer_draw_text($handle, "-= TERIMA KASIH =-", 250, $y+=100);
-        printer_delete_font($font);
-        
-        printer_end_page($handle);
-        printer_end_doc($handle);
-        printer_close($handle);
+        $printer->setJustification();
+        $printer->cut();
+        $printer->close();
       }
        
       return view('selling_details.success', compact('setting'));
