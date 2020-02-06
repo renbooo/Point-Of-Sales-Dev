@@ -27,7 +27,7 @@
 		<tr>
 			<td align="center">
 				<div class="box">
-					<img src="{{public_path('images/card.png')}}" class="card">
+					<img src="{{public_path('images/card.jpg')}}" class="card">
 					<div class="code">{{$data->member_code}}</div>
 					<div class="barcode">
 						<img src="data:image/png;base64,{{DNS1D::getBarcodePNG($data->member_code, 'C39')}}" height="30" width="100">

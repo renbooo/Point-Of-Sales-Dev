@@ -106,7 +106,7 @@
             <li>
                 <a class="nav-link" href="{{route('user.index')}}">
                     <i class="fas fa-users"></i>
-                    <span>User</span>
+                    <span>Kasir</span>
                 </a>
             </li>
             <li>

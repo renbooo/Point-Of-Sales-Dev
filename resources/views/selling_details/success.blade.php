@@ -21,12 +21,12 @@
           </div>
 
           <br><br>
-          @if($setting->nota_type==0)
+          @if($setting->note_type==0)
             <a class="btn btn-warning btn-lg" href="{{ route('transaction.print') }}">Cetak Ulang Nota</a>
           @else
             <a class="btn btn-warning btn-lg" onclick="showNote()">Cetak Ulang Nota</a>
             <script type="text/javascript">
-              showNota();
+              showNote();
               function showNote(){
                 window.open("{{ route('transaction.pdf') }}", "Nota PDF", "height=650,width=1024,left=150,scrollbars=yes");
               }              

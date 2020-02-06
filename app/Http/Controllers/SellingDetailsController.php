@@ -219,9 +219,7 @@ class SellingDetailsController extends Controller
    }
 
    public function notePDF(){
-     $detail = SellingDetails::leftJoin('product', 'product.product_code', '=', 'selling_details.product_code')
-        ->where('selling_id', '=', session('selling_id'))
-        ->get();
+     $detail = SellingDetails::leftJoin('product', 'product.product_code', '=', 'selling_details.product_code')->where('selling_id', '=', session('selling_id'))->get();
 
       $selling = Selling::find(session('selling_id'));
       $setting = Setting::find(1);

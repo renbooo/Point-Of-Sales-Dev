@@ -14,7 +14,7 @@ class SellingController extends Controller
         return view('selling.index');
     }
     public function listData(){
-        $selling = Selling::leftJoin('users', 'users.id', '=', 'selling.users_id')->select('users.*', 'selling.*', 'selling.created_at as date')->orderBy('selling.selling_id', 'asc')->get();
+        $selling = Selling::leftJoin('users', 'users.id', '=', 'selling.users_id')->select('users.*', 'selling.*', 'selling.created_at as date')->orderBy('selling.selling_id', 'desc')->get();
         $no = 0;
         $data = array();
         foreach ($selling as $list) {
@@ -34,7 +34,7 @@ class SellingController extends Controller
                         Aksi
                       </button>
                       <div class="dropdown-menu">
-                        <a onclick="editForm('.$list->selling_id.')" class="dropdown-item has-icon"><i class="fas fa-edit"></i>Edit Data</a>
+                        <a onclick="showDetail('.$list->selling_id.')" class="dropdown-item has-icon"><i class="fas fa-eye"></i>Lihat Data</a>
                         <a onclick="deleteData('.$list->selling_id.')" class="dropdown-item has-icon"><i class="fas fa-trash"></i>Hapus Data</a>
                       </div></tr>';
             $data[] = $row;
