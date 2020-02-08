@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="{{asset('stisla/modules/fontawesome/css/all.min.css')}}">
   {{-- <link rel="stylesheet" href="{{asset('stisla/modules/datepicker/datepicker3.css')}}">
  --}}  {{-- <link rel="stylesheet" href="{{asset('stisla/modules/bootstrap-daterangepicker/daterangepicker.css')}}"> --}}
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-
+  {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"> --}}
+<link rel="stylesheet" href="{{asset('stisla/DataTables-1.10.20/datatables.min.css')}}">
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{asset('stisla/css/style.css')}}">
   <link rel="stylesheet" href="{{asset('stisla/css/components.css')}}">
@@ -28,26 +28,33 @@
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
           </ul>
           <div class="search-element">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+            <input class="form-control" type="search" placeholder="Pencarian" aria-label="Search" data-width="250">
             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
             <div class="search-backdrop"></div>
             <div class="search-result">
+              <div class="search-item">
+                <a href="#">Kolom pencarian ini hanya hiasan, jangan berharap lebih :(</a>
+                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+              </div>
             </div>
           </div>
         </form>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+            @if(Auth::user()->level==1)
             <img alt="image" src="{{asset('images/'.Auth::user()->photos)}}" class="rounded-circle mr-1">
+            @endif
             <div class="d-sm-none d-lg-inline-block">Hi, {{Auth::user()->name}} </div></a>
             <div class="dropdown-menu dropdown-menu-right">
+              @if(Auth::user()->level==1)
               <a href="{{ route('user.profile') }}" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
-              @if(Auth::user()->level==1)
+              
               <a href="{{ route('setting.index') }}" class="dropdown-item has-icon">
                 <i class="fas fa-cog"></i> Settings
               </a>
-               @endif
+              @endif
               <div class="dropdown-divider"></div>
               <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                 <i class="fas fa-sign-out-alt"></i> Logout
@@ -182,14 +189,16 @@
   <script src="{{asset('stisla/modules/jquery-ui/jquery-ui.min.js')}}"></script>
 <script src="{{asset('stisla/modules/chart.min.js')}}"></script>
   <!-- Page Specific JS File -->
-  <script src="{{asset('stisla/js/page/components-table.js')}}"></script>
+  {{-- <script src="{{asset('stisla/js/page/components-table.js')}}"></script>
   
-  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> --}}
+  <script src="{{asset('stisla/DataTables-1.10.20/datatables.min.js')}}"></script>
   <!-- Template JS File -->
   <script src="{{asset('stisla/js/scripts.js')}}"></script>
   <script src="{{asset('stisla/js/custom.js')}}"></script>
-  <script src="{{ asset('stisla/validator.min.js') }}"></script>
-
+  <script src="{{asset('stisla/validator.min.js')}}"></script>
+  
   @yield('script')
+  
 </body>
 </html>

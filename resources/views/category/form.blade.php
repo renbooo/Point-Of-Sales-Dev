@@ -11,15 +11,14 @@
                     <input type="hidden" id="id" name="id">
                     <div class="form-group form-float">
                         <div class="form-line">
-                        	
                         	<label class="form-label">Nama Kategori</label>
                             <input type="text" class="form-control" id="category_name" name="category_name" autofocus required>
                         </div>
                     </div>
 	            </div>
 	            <div class="modal-footer">
-	                <button type="submit" class="btn btn-link waves-effect">SIMPAN</button>
-	                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">BATAL</button>
+	                <button type="button" class="btn btn-secondary" data-dismiss="modal">BATAL</button>
+                    <button type="submit" class="btn btn-primary">SIMPAN</button>
 	            </div>
             </form>
         </div>

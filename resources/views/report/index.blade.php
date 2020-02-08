@@ -53,6 +53,9 @@ $(function(){
    // });
 
    table = $('.table-report').DataTable({
+     "language": {
+        "url" : "{{asset('tables_indo.json')}}",
+     },
      "dom" : 'Brt',
      "bSort" : false,
      "bPaginate" : false,

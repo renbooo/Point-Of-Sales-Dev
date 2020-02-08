@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title')
-  Selesai Transaksi
+@section('content-header')
+  Transaksi Berhasil!
 @endsection
 
 @section('breadcrumb')
@@ -11,10 +11,8 @@
 @endsection
 
 @section('content') 
-<div class="row">
-  <div class="col-xs-12">
-    <div class="box">
-       <div class="box-body">
+<div class="card">
+      <div class="card-body text-center">
           <div class="alert alert-success alert-dismissible">
             <i class="icon fa fa-check"></i>
             Data Transaksi telah disimpan.
@@ -34,8 +32,6 @@
           @endif
           <a class="btn btn-primary btn-lg" href="{{ route('transaction.new') }}">Transaksi Baru</a>
           <br><br><br><br>
-      </div>
-   </div>
   </div>
 </div>
 @endsection

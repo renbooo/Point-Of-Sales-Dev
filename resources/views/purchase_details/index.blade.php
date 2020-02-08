@@ -27,15 +27,15 @@ Transaksi Pembelian
         <form class="form form-horizontal form-product" method="POST">
             {{csrf_field()}}
             <input type="hidden" name="purchase_id" value="{{$purchase_id}}">
-            <div class="form-group form-float">
-                <div class="form-line">
-                    <label class="form-label">Kode Produk</label>
-                    <input type="text" class="form-control" id="product_code" name="product_code" autofocus required>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" onclick="showProduct()" class="btn btn-info waves-effect">....</button>
-                </div>
+          <div class="section-title">Kode Produk</div>
+          <div class="form-group">
+            <div class="input-group mb-3">
+              <input id="product_code" name="product_code" type="text" class="form-control" placeholder="" aria-label="" autofocus required>
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button" onclick="showProduct()">....</button>
+              </div>
             </div>
+          </div>
         </form>
         <form class="form-shopping-cart">
             {{csrf_field()}} {{method_field('PATCH')}}
@@ -73,19 +73,19 @@ Transaksi Pembelian
                 <input type="hidden" name="pay" id="pay">
                 <div class="form-group form-float">
                     <div class="form-line">
-                        <label class="form-label">Total</label>
+                        <div class="section-title">Total</div>
                         <input type="text" class="form-control" id="total_rp" readonly>
                     </div>
                 </div>
                 <div class="form-group form-float">
                     <div class="form-line">
-                        <label class="form-label">Diskon</label>
+                        <div class="section-title">Diskon</div>
                         <input type="number" class="form-control" id="discount" name="discount" value="0">
                     </div>
                 </div>
                 <div class="form-group form-float">
                     <div class="form-line">
-                        <label class="form-label">Bayar</label>
+                        <div class="section-title">Bayar</div>
                         <input type="text" class="form-control" id="pay_rp" readonly>
                     </div>
                 </div>

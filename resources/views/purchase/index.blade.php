@@ -47,6 +47,9 @@
 	var table, save_method, table1;
 	$(function(){
 		table = $('.table-purchase').DataTable({
+			"language": {
+            	"url" : "{{asset('tables_indo.json')}}",
+         	},
 			"processing" : true,
 			"serverside" : true,
 			"ajax" : {

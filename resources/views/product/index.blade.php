@@ -57,10 +57,13 @@
 	var table, save_method;
 	$(function(){
 		table = $('.table').DataTable({
+			"language": {
+				"url" : "{{asset('tables_indo.json')}}",
+			},
 			"processing" : true,
 			"serverside" : true,
 			"ajax" : {
-				"url"  : "{{route('product.data')}}",
+				"url"  : "{{route('product.data')}}", 
 				"type" : "GET"
 			},
 			"columnDefs" : [{

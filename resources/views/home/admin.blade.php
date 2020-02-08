@@ -68,7 +68,7 @@
       </div>
 </div>
 
-<div class="row">
+    <div class="row">
               <div class="card">
                 <div class="card-header">
               <h4>Grafik Pendapatan {{ indo_date($begin) }} - {{ indo_date($end) }}</h4>
