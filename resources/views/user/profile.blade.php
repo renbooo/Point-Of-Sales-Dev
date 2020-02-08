@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content-header')
-	Daftar User
+	Profil
 @endsection
 
 @section('content')     

@@ -6,8 +6,8 @@
    {{ csrf_field() }}
    
    <div class="modal-header">
+      <h4 class="modal-title">Periode Laporan</h4>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"> &times; </span> </button>
-      <h3 class="modal-title">Periode Laporan</h3>
    </div>
             
 <div class="modal-body">
@@ -31,8 +31,8 @@
 </div>
    
    <div class="modal-footer">
-      <button type="submit" class="btn btn-primary btn-save"><i class="fa fa-floppy-o"></i> Simpan </button>
-      <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-arrow-circle-left"></i> Batal</button>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">BATAL</button>
+      <button type="submit" class="btn btn-primary btn-save">SIMPAN</button>
    </div>
       
    </form>

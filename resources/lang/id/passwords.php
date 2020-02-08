@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'reset' => 'Your password has been reset!',
-    'sent' => 'We have e-mailed your password reset link!',
-    'token' => 'This password reset token is invalid.',
-    'user' => "We can't find a user with that e-mail address.",
+    'reset' => 'Kata sandi Anda telah disetel ulang!',
+    'sent' => 'Kami telah mengirim e-mail tautan atur ulang kata sandi Anda!',
+    'token' => 'Token atur ulang kata sandi ini tidak valid.',
+    'user' => 'Kami tidak dapat menemukan pengguna dengan alamat email itu.',
 
 ];

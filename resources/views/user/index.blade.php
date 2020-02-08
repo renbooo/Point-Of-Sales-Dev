@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content-header')
-	Pengguna
+	Kasir
 @endsection
 
 @section('content')

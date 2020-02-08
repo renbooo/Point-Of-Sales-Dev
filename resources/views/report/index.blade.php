@@ -47,11 +47,6 @@
 <script type="text/javascript">
 var table, begin, end;
 $(function(){
-   // $('#begin, #end').datepicker({
-   //   format: 'yyyy-mm-dd',
-   //   autoclose: true
-   // });
-
    table = $('.table-report').DataTable({
      "language": {
         "url" : "{{asset('tables_indo.json')}}",
