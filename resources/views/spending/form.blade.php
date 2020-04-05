@@ -23,8 +23,8 @@
                     </div>
 	            </div>
 	            <div class="modal-footer">
-	                <button type="submit" class="btn btn-link waves-effect">SIMPAN</button>
-	                <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">BATAL</button>
+	                <button type="button" class="btn btn-secondary" data-dismiss="modal">BATAL</button>
+                    <button type="submit" class="btn btn-primary">SIMPAN</button>
 	            </div>
             </form>
         </div>

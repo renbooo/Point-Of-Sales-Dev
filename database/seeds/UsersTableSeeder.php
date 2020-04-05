@@ -26,7 +26,6 @@ class UsersTableSeeder extends Seeder
         		'photos'	=>	'avatar.png',
         		'level'		=>	2
         	]
-
         ));
     }
 }

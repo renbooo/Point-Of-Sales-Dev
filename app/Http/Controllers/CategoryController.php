@@ -25,7 +25,7 @@ class CategoryController extends Controller
                       </button>
                       <div class="dropdown-menu">
                         <a onclick="editForm('.$list->category_id.')" class="dropdown-item has-icon"><i class="fas fa-edit"></i>Edit Data</a>
-                        <a onclick="deleteData('.$list->category_id.')" class="dropdown-item has-icon"><i class="fas fa-trash"></i>Hapus Data</a>
+                        <a onclick="deleteData('.$list->category_id.')" class="deleteData dropdown-item has-icon"><i class="fas fa-trash"></i>Hapus Data</a>
                       </div>
                      </tr>';
             $data[] = $row;

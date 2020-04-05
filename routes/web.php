@@ -19,8 +19,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => ['web', 'usercheck:1']],
-function(){
+Route::group(['middleware' => ['web', 'usercheck:1']], function(){
 	Route::get('category/data', 'CategoryController@listData')->name('category.data');
 	Route::resource('category', 'CategoryController');
 
